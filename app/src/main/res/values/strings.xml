@@ -20,4 +20,8 @@
         completions."
     </string>
     <string name="title_activity_loginshop">LogIn</string>
+    <string name="title_activity_home_shop">HomeShop</string>
+    <string name="title_activity_home_cust">HomeCust</string>
+    <string name="title_activity_profile_shop">ProfileShop</string>
+    <string name="title_activity_profile_cust">ProfileCust</string>
 </resources>

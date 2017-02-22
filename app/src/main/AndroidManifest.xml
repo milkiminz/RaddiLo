@@ -37,7 +37,24 @@
             </intent-filter>
         </activity>
         <activity android:name=".otpcust" />
-        <activity android:name=".otpshop"></activity>
+        <activity android:name=".otpshop" />
+        <activity
+            android:name=".HomeShop"
+            android:label="@string/title_activity_home_shop"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".HomeCust"
+            android:label="@string/title_activity_home_cust"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AboutUs" />
+        <activity
+            android:name=".ProfileShop"
+            android:label="@string/title_activity_profile_shop"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProfileCust"
+            android:label="@string/title_activity_profile_cust"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
