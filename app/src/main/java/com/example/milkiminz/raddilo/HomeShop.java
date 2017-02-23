@@ -88,7 +88,7 @@ public class HomeShop extends AppCompatActivity
             startActivity(new Intent(HomeShop.this,ProfileShop.class));
             finish();
         } else if (id == R.id.nav_aboutus) {
-
+            startActivity(new Intent(HomeShop.this,AboutUs.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

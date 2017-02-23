@@ -88,7 +88,7 @@ public class ProfileCust extends AppCompatActivity
             startActivity(new Intent(ProfileCust.this,ProfileCust.class));
             finish();
         } else if (id == R.id.nav_aboutus) {
-
+            startActivity(new Intent(ProfileCust.this,AboutUs.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

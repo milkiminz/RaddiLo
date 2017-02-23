@@ -120,6 +120,7 @@ public class Logincust extends AppCompatActivity  {
 
 
                                     Toast.makeText(Logincust.this, "success", Toast.LENGTH_LONG).show();
+                                   startActivity(new Intent(Logincust.this,HomeCust.class));
                                     finish();
                                 } else if (s.equals("failed")) {
 

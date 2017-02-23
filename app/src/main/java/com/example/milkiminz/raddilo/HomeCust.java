@@ -90,6 +90,7 @@ public class HomeCust extends AppCompatActivity
             finish();
 
         } else if (id == R.id.nav_aboutus) {
+            startActivity(new Intent(HomeCust.this,AboutUs.class));
 
         }
 

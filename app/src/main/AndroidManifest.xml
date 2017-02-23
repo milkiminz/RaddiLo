@@ -21,7 +21,13 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Choose" />
+        <activity android:name=".Choose" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Logincust"
             android:label="@string/title_activity_logincust" />
@@ -30,18 +36,16 @@
             android:label="@string/title_activity_loginshop" />
         <activity android:name=".Registrationcust" />
         <activity android:name=".Registrationshop">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".otpcust" />
         <activity android:name=".otpshop" />
         <activity
             android:name=".HomeShop"
             android:label="@string/title_activity_home_shop"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+
+        </activity>
         <activity
             android:name=".HomeCust"
             android:label="@string/title_activity_home_cust"

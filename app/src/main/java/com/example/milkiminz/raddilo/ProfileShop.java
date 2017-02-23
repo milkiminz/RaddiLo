@@ -88,7 +88,7 @@ public class ProfileShop extends AppCompatActivity
             startActivity(new Intent(ProfileShop.this,ProfileShop.class));
             finish();
         } else if (id == R.id.nav_aboutus) {
-
+            startActivity(new Intent(ProfileShop.this,AboutUs.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
