@@ -68,8 +68,15 @@ public class HomeCust extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_feeback) {
+            startActivity(new Intent(HomeCust.this,Feedback.class));
             return true;
+        }
+        else if (id==R.id.action_logout){
+
+        }
+        else if (id==R.id.action_aboutdevelopers){
+            startActivity(new Intent(HomeCust.this,AboutDevelopers.class));
         }
 
         return super.onOptionsItemSelected(item);

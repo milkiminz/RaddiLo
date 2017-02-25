@@ -98,6 +98,9 @@ public class Registrationshop extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+    public void login(View view){
+        startActivity(new Intent(Registrationshop.this,Loginshop.class));
+    }
     class AttemptRegister extends AsyncTask<String, String, String> {
 
 

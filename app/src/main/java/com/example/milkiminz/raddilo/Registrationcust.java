@@ -2,6 +2,7 @@ package com.example.milkiminz.raddilo;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -24,6 +25,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
+
+import static com.example.milkiminz.raddilo.R.id.email;
+import static com.example.milkiminz.raddilo.R.id.password;
 
 public class Registrationcust extends AppCompatActivity {
 
@@ -96,6 +100,10 @@ public class Registrationcust extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+    public void login(View view){
+        startActivity(new Intent(Registrationcust.this,Logincust.class));
     }
     class AttemptRegister extends AsyncTask<String, String, String> {
 

@@ -58,7 +58,7 @@ import java.util.Map;
 
 public class Loginshop extends AppCompatActivity  {
 
-    String loginUrl = "http://139.59.47.63/logincust.php";
+    String loginUrl = "http://139.59.47.63/loginshop.php";
 
     EditText email;
     EditText password;
@@ -155,8 +155,8 @@ public class Loginshop extends AppCompatActivity  {
                     Map<String, String> params = new Hashtable<>();
 
                     //Adding parameters
-                    params.put("cpassword", pass);
-                    params.put("cemail", em);
+                    params.put("spassword", pass);
+                    params.put("semail", em);
 
                     //returning parameters
                     return params;

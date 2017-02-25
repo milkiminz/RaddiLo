@@ -21,7 +21,7 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Choose" >
+        <activity android:name=".Choose">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,17 +35,13 @@
             android:name=".Loginshop"
             android:label="@string/title_activity_loginshop" />
         <activity android:name=".Registrationcust" />
-        <activity android:name=".Registrationshop">
-
-        </activity>
+        <activity android:name=".Registrationshop" />
         <activity android:name=".otpcust" />
         <activity android:name=".otpshop" />
         <activity
             android:name=".HomeShop"
             android:label="@string/title_activity_home_shop"
-            android:theme="@style/AppTheme.NoActionBar" >
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".HomeCust"
             android:label="@string/title_activity_home_cust"
@@ -58,7 +54,9 @@
         <activity
             android:name=".ProfileCust"
             android:label="@string/title_activity_profile_cust"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Feedback" />
+        <activity android:name=".AboutDevelopers"></activity>
     </application>
 
 </manifest>
