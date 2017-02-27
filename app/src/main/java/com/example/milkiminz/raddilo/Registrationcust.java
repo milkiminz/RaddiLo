@@ -32,7 +32,7 @@ import static com.example.milkiminz.raddilo.R.id.password;
 public class Registrationcust extends AppCompatActivity {
 
 
-    String loginUrl = getResources().getString(R.string.registercust);
+    String loginUrl;
 
     EditText name;
     EditText email;
@@ -54,7 +54,7 @@ public class Registrationcust extends AppCompatActivity {
         confirmpassword = (EditText) findViewById(R.id.cconfirmpassword);
         phone = (EditText) findViewById(R.id.cphone);
         address = (EditText) findViewById(R.id.caddress);
-
+        loginUrl = getResources().getString(R.string.registercust);
 
     }
 
