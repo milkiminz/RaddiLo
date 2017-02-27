@@ -7,6 +7,11 @@
             android:icon="@drawable/home"
             android:title="Home" />
         <item
+            android:id="@+id/nav_cbook"
+            android:icon="@drawable/home"
+            android:title="My Bookings"
+            />
+        <item
             android:id="@+id/nav_cprofile"
             android:icon="@drawable/face"
             android:title="My Profile" />

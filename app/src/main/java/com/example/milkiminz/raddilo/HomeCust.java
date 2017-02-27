@@ -235,7 +235,12 @@ public class HomeCust extends AppCompatActivity
             startActivity(new Intent(HomeCust.this,ProfileCust.class));
             finish();
 
-        } else if (id == R.id.nav_aboutus) {
+        }else if(id==R.id.nav_cbook){
+            startActivity(new Intent(HomeCust.this,Bookings.class));
+            finish();
+
+        }
+        else if (id == R.id.nav_aboutus) {
             startActivity(new Intent(HomeCust.this,AboutUs.class));
 
         }

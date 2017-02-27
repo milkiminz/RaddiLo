@@ -26,4 +26,5 @@
     <string name="title_activity_profile_cust">ProfileCust</string>
     <string name="title_activity_updatecust">updatecust</string>
     <string name="title_activity_updateshop">updateshop</string>
+    <string name="title_activity_bookings">Bookings</string>
 </resources>

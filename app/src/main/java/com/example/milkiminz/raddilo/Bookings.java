@@ -14,9 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -39,37 +37,21 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.jar.JarException;
 
-public class ProfileCust extends AppCompatActivity
+public class Bookings extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     RequestQueue requestQueue;
-    TextView nm,add,ph,em;
-
+    String[] nm,address,mail,ph,qty,ppr,pls,mel,gls,oth;
+    ListView ml;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_cust);
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setContentView(R.layout.activity_bookings);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        requestQueue= Volley.newRequestQueue(ProfileCust.this);
-        nm=(TextView)findViewById(R.id.name);
-        add=(TextView)findViewById(R.id.address);
-        ph=(TextView)findViewById(R.id.phone);
-        em=(TextView)findViewById(R.id.email);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        ml=(ListView)findViewById(R.id.myorders);
 
-                Intent i=new Intent(ProfileCust.this,updatecust.class);
-                i.putExtra("name",nm.getText().toString());
-                i.putExtra("email",em.getText().toString());
-                i.putExtra("address",add.getText().toString());
-                i.putExtra("phone",ph.getText().toString());
-                startActivity(i);
-            }
-        });
+        requestQueue= Volley.newRequestQueue(Bookings.this);
         JSONObject params = new JSONObject();
         try{
             params.put("email",loadData());
@@ -77,30 +59,48 @@ public class ProfileCust extends AppCompatActivity
         }catch (JSONException e){
 
         }
-        String load_url = "http://139.59.47.63/getprofilecust.php";
-
+        String load_url = "http://139.59.47.63/fetchmyorders.php";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(JSONObject response) {
-
                 try{
-                    JSONArray ar=response.getJSONArray("custdetail");
-
-                    JSONObject ob1=ar.getJSONObject(0);
-
-                    nm.setText(ob1.getString("cname"));
-                    add.setText(ob1.getString("cadd"));
-                    ph.setText(ob1.getString("cph"));
-                    em.setText(loadData());
+                    JSONArray jsonArray=response.getJSONArray("orderdetails");
+                    int l=jsonArray.length();
+                    nm=new String[l];
+                    address=new String[l];
+                    mail=new String[l];
+                    ph=new String[l];
+                    qty=new String[l];
+                    ppr=new String[l];
+                    pls=new String[l];
+                    gls=new String[l];
+                    mel=new String[l];
+                    oth=new String[l];
+                    for (int i=0;i<l;i++){
+                        JSONObject jsonObject=jsonArray.getJSONObject(i);
+                        nm[i]=jsonObject.getString("sname");
+                        address[i]=jsonObject.getString("sadd");
+                        mail[i]=jsonObject.getString("semail");
+                        ph[i]=jsonObject.getString("sph");
+                        qty[i]=jsonObject.getString("bweight");
+                        ppr[i]=jsonObject.getString("bpaper");
+                        pls[i]=jsonObject.getString("bplastic");
+                        gls[i]=jsonObject.getString("bglass");
+                        mel[i]=jsonObject.getString("bmetal");
+                        oth[i]=jsonObject.getString("bother");
+                    }
+                    myorder rc=new myorder(Bookings.this,nm,mail,ph,address,qty,ppr,gls,mel,oth,pls);
+                    ml.setAdapter(rc);
                 }catch (Exception e){
 
                 }
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ProfileCust.this,error.toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(Bookings.this,error.toString(),Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -111,6 +111,9 @@ public class ProfileCust extends AppCompatActivity
             }
         };
         requestQueue.add(jsonObjectRequest);
+
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -141,7 +144,6 @@ public class ProfileCust extends AppCompatActivity
         }
         return out;
     }
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -155,10 +157,7 @@ public class ProfileCust extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.profile_cust, menu);
-
-
-
+        getMenuInflater().inflate(R.menu.bookings, menu);
         return true;
     }
 
@@ -171,7 +170,7 @@ public class ProfileCust extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_feeback) {
-            startActivity(new Intent(ProfileCust.this,Feedback.class));
+            startActivity(new Intent(Bookings.this,Feedback.class));
             return true;
         }
         else if (id==R.id.action_logout){
@@ -184,10 +183,8 @@ public class ProfileCust extends AppCompatActivity
 
         }
         else if (id==R.id.action_aboutdevelopers){
-            startActivity(new Intent(ProfileCust.this,AboutDevelopers.class));
+            startActivity(new Intent(Bookings.this,AboutDevelopers.class));
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -198,20 +195,20 @@ public class ProfileCust extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_chome) {
-            startActivity(new Intent(ProfileCust.this,HomeCust.class));
+            startActivity(new Intent(Bookings.this,HomeCust.class));
             finish();
 
         } else if (id == R.id.nav_cprofile) {
-            startActivity(new Intent(ProfileCust.this,ProfileCust.class));
+            startActivity(new Intent(Bookings.this,ProfileCust.class));
             finish();
 
         }else if(id==R.id.nav_cbook){
-            startActivity(new Intent(ProfileCust.this,Bookings.class));
+            startActivity(new Intent(Bookings.this,Bookings.class));
             finish();
 
         }
         else if (id == R.id.nav_aboutus) {
-            startActivity(new Intent(ProfileCust.this,AboutUs.class));
+            startActivity(new Intent(Bookings.this,AboutUs.class));
 
         }
 

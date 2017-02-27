@@ -64,6 +64,10 @@
         <activity
             android:name=".updateshop"
             android:label="@string/title_activity_updateshop"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Bookings"
+            android:label="@string/title_activity_bookings"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

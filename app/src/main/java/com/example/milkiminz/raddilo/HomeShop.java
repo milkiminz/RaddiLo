@@ -1,5 +1,6 @@
 package com.example.milkiminz.raddilo;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,27 +14,106 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 
 public class HomeShop extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+        ListView orderlist;
+    RequestQueue requestQueue;
+    String[] nm,address,mail,ph,qty,ppr,pls,mel,gls,oth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_shop);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        orderlist=(ListView)findViewById(R.id.orderlist);
+        requestQueue= Volley.newRequestQueue(HomeShop.this);
+        JSONObject params = new JSONObject();
+        try{
+            params.put("email",loadData());
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        }catch (JSONException e){
+
+        }
+        String load_url = "http://139.59.47.63/fetchtodayorders.php";
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
+            @SuppressLint("SetTextI18n")
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onResponse(JSONObject response) {
+                try{
+                    JSONArray jsonArray=response.getJSONArray("orderdetails");
+                    int l=jsonArray.length();
+                    nm=new String[l];
+                    address=new String[l];
+                    mail=new String[l];
+                    ph=new String[l];
+                    qty=new String[l];
+                    ppr=new String[l];
+                    pls=new String[l];
+                    gls=new String[l];
+                    mel=new String[l];
+                    oth=new String[l];
+                    for (int i=0;i<l;i++){
+                        JSONObject jsonObject=jsonArray.getJSONObject(i);
+                        nm[i]=jsonObject.getString("cname");
+                        address[i]=jsonObject.getString("cadd");
+                        mail[i]=jsonObject.getString("cemail");
+                        ph[i]=jsonObject.getString("cph");
+                        qty[i]=jsonObject.getString("bweight");
+                        ppr[i]=jsonObject.getString("bpaper");
+                        pls[i]=jsonObject.getString("bplastic");
+                        gls[i]=jsonObject.getString("bglass");
+                        mel[i]=jsonObject.getString("bmetal");
+                        oth[i]=jsonObject.getString("bother");
+                    }
+                    recycleorder rc=new recycleorder(HomeShop.this,nm,mail,ph,address,qty,ppr,gls,mel,oth,pls);
+                    orderlist.setAdapter(rc);
+                }catch (Exception e){
+
+                }
+
             }
-        });
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(HomeShop.this,error.toString(),Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                return headers;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+
+
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -43,6 +123,26 @@ public class HomeShop extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+    protected String loadData() {
+        String FILENAME = "email.txt";
+        String out="";
+        try {
+            out="";
+            FileInputStream fis1 = getApplication().openFileInput(FILENAME);
+            BufferedReader br1 = new BufferedReader(new InputStreamReader(fis1));
+            String sLine1 = null;
+
+            while (((sLine1 = br1.readLine()) != null)) {
+                out += sLine1;
+            }
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        return out;
     }
 
     @Override
