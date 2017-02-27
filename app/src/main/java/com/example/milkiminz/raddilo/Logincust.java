@@ -50,6 +50,12 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -70,6 +76,10 @@ public class Logincust extends AppCompatActivity  {
         setContentView(R.layout.activity_logincust);
        email = (EditText) findViewById(R.id.cemail);
        password = (EditText) findViewById(R.id.cpassword);
+        if(!loadData().equals("")){
+            startActivity(new Intent(Logincust.this,HomeCust.class));
+            finish();
+        }
 
     }
 
@@ -118,7 +128,7 @@ public class Logincust extends AppCompatActivity  {
 
                                if (s.equals("success")) {
 
-
+                                    saveData2(em);
                                     Toast.makeText(Logincust.this, "success", Toast.LENGTH_LONG).show();
                                    startActivity(new Intent(Logincust.this,HomeCust.class));
                                     finish();
@@ -178,6 +188,41 @@ public class Logincust extends AppCompatActivity  {
 
 
         }
+    }
+    protected String loadData() {
+        String FILENAME = "email.txt";
+        String out="";
+        try {
+            out="";
+            FileInputStream fis1 = getApplication().openFileInput(FILENAME);
+            BufferedReader br1 = new BufferedReader(new InputStreamReader(fis1));
+            String sLine1 = null;
+
+            while (((sLine1 = br1.readLine()) != null)) {
+                out += sLine1;
+            }
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        return out;
+    }
+    protected void saveData2(String em){
+        String FILENAME1 = "email.txt";
+        String verifyme=em;
+
+        try {
+            FileOutputStream fos1 = getApplication().openFileOutput(FILENAME1, Context.MODE_PRIVATE);
+            fos1.write(verifyme.getBytes());
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 

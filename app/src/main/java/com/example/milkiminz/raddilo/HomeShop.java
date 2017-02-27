@@ -14,6 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.io.File;
+
 public class HomeShop extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -73,6 +75,12 @@ public class HomeShop extends AppCompatActivity
             return true;
         }
         else if (id==R.id.action_logout){
+            File dir = getFilesDir();
+            File file = new File(dir, "email.txt");
+            file.delete();
+            Intent p=new Intent(this,Loginshop.class);
+            startActivity(p);
+            finish();
 
         }
         else if (id==R.id.action_aboutdevelopers){

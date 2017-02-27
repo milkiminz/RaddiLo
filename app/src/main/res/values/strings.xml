@@ -24,4 +24,6 @@
     <string name="title_activity_home_cust">HomeCust</string>
     <string name="title_activity_profile_shop">ProfileShop</string>
     <string name="title_activity_profile_cust">ProfileCust</string>
+    <string name="title_activity_updatecust">updatecust</string>
+    <string name="title_activity_updateshop">updateshop</string>
 </resources>

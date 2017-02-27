@@ -14,6 +14,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -50,7 +55,7 @@ public class Feedback extends AppCompatActivity {
                 //Creating parameters
                 Map<String,String> params = new Hashtable<>();
 
-                params.put("feedback", fb);
+                params.put("feedback", "By"+loadData()+":"+fb);
 
 
                 return params;
@@ -59,6 +64,27 @@ public class Feedback extends AppCompatActivity {
 
 
         requestQueue.add(stringRequest);
+    }
+
+    protected String loadData() {
+        String FILENAME = "email.txt";
+        String out="";
+        try {
+            out="";
+            FileInputStream fis1 = getApplication().openFileInput(FILENAME);
+            BufferedReader br1 = new BufferedReader(new InputStreamReader(fis1));
+            String sLine1 = null;
+
+            while (((sLine1 = br1.readLine()) != null)) {
+                out += sLine1;
+            }
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        return out;
     }
 }
 

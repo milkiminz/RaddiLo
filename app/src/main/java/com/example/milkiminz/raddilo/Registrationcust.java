@@ -87,21 +87,7 @@ public class Registrationcust extends AppCompatActivity {
         }
         return false;
     }
-    protected void saveData2(String em){
-        String FILENAME1 = "email.txt";
-        String verifyme=em;
 
-        try {
-            FileOutputStream fos1 = getApplication().openFileOutput(FILENAME1, Context.MODE_PRIVATE);
-            fos1.write(verifyme.getBytes());
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
     public void login(View view){
         startActivity(new Intent(Registrationcust.this,Logincust.class));
     }
@@ -136,7 +122,7 @@ public class Registrationcust extends AppCompatActivity {
 
                             if (s.equals("success")) {
 
-                                saveData2(em);
+
                                 Toast.makeText(Registrationcust.this, "successfully Registered", Toast.LENGTH_LONG).show();
                                 finish();
                             } else if (s.equals("failed")) {
