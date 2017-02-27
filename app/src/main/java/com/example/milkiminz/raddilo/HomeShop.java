@@ -52,7 +52,7 @@ public class HomeShop extends AppCompatActivity
         setSupportActionBar(toolbar);
         orderlist=(ListView)findViewById(R.id.orderlist);
         requestQueue= Volley.newRequestQueue(HomeShop.this);
-        FirebaseMessaging.getInstance().subscribeToTopic("updates");
+
         JSONObject params = new JSONObject();
         try{
             params.put("email",loadData());

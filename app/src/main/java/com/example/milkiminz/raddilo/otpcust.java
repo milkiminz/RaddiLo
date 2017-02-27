@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class otpcust extends AppCompatActivity {
 
-    String Url = getResources().getString(R.string.verifycust);
+    String Url;
     ProgressDialog pDialog;
     EditText cotp;
     String ss;
@@ -41,7 +41,7 @@ public class otpcust extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otpcust);
         cotp=(EditText) findViewById(R.id.cotp);
-
+        Url = getResources().getString(R.string.verifycust);
     }
 
 

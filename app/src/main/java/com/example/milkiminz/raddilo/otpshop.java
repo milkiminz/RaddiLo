@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class otpshop extends AppCompatActivity {
 
-    String Url = getResources().getString(R.string.verifyshop);
+    String Url;
     ProgressDialog pDialog;
     EditText sotp;
     String ss;
@@ -41,7 +41,7 @@ public class otpshop extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otpshop);
         sotp=(EditText) findViewById(R.id.sotp);
-
+        Url = getResources().getString(R.string.verifyshop);
     }
 
 

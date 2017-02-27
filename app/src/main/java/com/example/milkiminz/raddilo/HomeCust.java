@@ -64,7 +64,7 @@ public class HomeCust extends AppCompatActivity
         setContentView(R.layout.activity_home_cust);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FirebaseMessaging.getInstance().subscribeToTopic("updates");
+
         s1=(Switch) findViewById(R.id.s1);
         s2=(Switch) findViewById(R.id.s2);
         s3=(Switch) findViewById(R.id.s3);

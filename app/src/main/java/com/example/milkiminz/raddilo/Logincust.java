@@ -64,7 +64,7 @@ import java.util.Map;
 
 public class Logincust extends AppCompatActivity  {
 
-    String loginUrl = getResources().getString(R.string.logincust);
+    String loginUrl;
 
     EditText email;
     EditText password;
@@ -76,6 +76,7 @@ public class Logincust extends AppCompatActivity  {
         setContentView(R.layout.activity_logincust);
        email = (EditText) findViewById(R.id.cemail);
        password = (EditText) findViewById(R.id.cpassword);
+        loginUrl = getResources().getString(R.string.logincust);
         if(!loadData().equals("")){
             startActivity(new Intent(Logincust.this,HomeCust.class));
             finish();
