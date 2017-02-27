@@ -32,6 +32,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -63,6 +64,7 @@ public class HomeCust extends AppCompatActivity
         setContentView(R.layout.activity_home_cust);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        FirebaseMessaging.getInstance().subscribeToTopic("updates");
         s1=(Switch) findViewById(R.id.s1);
         s2=(Switch) findViewById(R.id.s2);
         s3=(Switch) findViewById(R.id.s3);
@@ -104,73 +106,73 @@ public class HomeCust extends AppCompatActivity
         return true;
     }
     public void sellnow(View view){
-        if(s1.isChecked()){
-            s1string="on";
+        if(!aw.getText().toString().equals("")) {
+            if (s1.isChecked()) {
+                s1string = "yes";
 
-        }
-        else {
-            s1string="off";
-        }
-        if(s2.isChecked()){
-            s2string="on";
+            } else {
+                s1string = "no";
+            }
+            if (s2.isChecked()) {
+                s2string = "yes";
 
-        }
-        else {
-            s2string="off";
-        }
-        if(s3.isChecked()){
-            s3string="on";
+            } else {
+                s2string = "no";
+            }
+            if (s3.isChecked()) {
+                s3string = "yes";
 
-        }
-        else {
-            s3string="off";
-        } if(s4.isChecked()){
-            s4string="on";
+            } else {
+                s3string = "no";
+            }
+            if (s4.isChecked()) {
+                s4string = "yes";
 
-        }
-        else {
-            s4string="off";
-        } if(s5.isChecked()){
-            s5string="on";
+            } else {
+                s4string = "no";
+            }
+            if (s5.isChecked()) {
+                s5string = "yes";
 
-        }
-        else {
-            s5string="off";
-        }
+            } else {
+                s5string = "no";
+            }
 
 
-
-       StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://139.59.47.63/bookraddiorder.php", new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Toast.makeText(HomeCust.this, response, Toast.LENGTH_LONG).show();
-                if(response.equals("success")) {
-                    Toast.makeText(HomeCust.this, "Ordered Successfully", Toast.LENGTH_LONG).show();
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, getResources().getString(R.string.homecusturl), new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Toast.makeText(HomeCust.this, response, Toast.LENGTH_LONG).show();
+                    if (response.equals(getResources().getString(R.string.success))) {
+                        Toast.makeText(HomeCust.this, getResources().getString(R.string.successful_order), Toast.LENGTH_LONG).show();
+                    }
                 }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(HomeCust.this,error.getMessage(),Toast.LENGTH_SHORT).show();
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                //Creating parameters
-                Map<String,String> params = new Hashtable<>();
-                params.put("email",loadData());
-                params.put("switch1",s1string);
-                params.put("switch2",s2string);
-                params.put("switch3",s3string);
-                params.put("switch4",s4string);
-                params.put("switch5",s5string);
-                params.put("aw",aw.getText().toString());
-                params.put("shopname",spstring);
-                return params;
-            }
-        };
-        requestQueue.add(stringRequest);
+                    Toast.makeText(HomeCust.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    //Creating parameters
+                    Map<String, String> params = new Hashtable<>();
+                    params.put("email", loadData());
+                    params.put("switch1", s1string);
+                    params.put("switch2", s2string);
+                    params.put("switch3", s3string);
+                    params.put("switch4", s4string);
+                    params.put("switch5", s5string);
+                    params.put("aw", aw.getText().toString());
+                    params.put("shopname", spstring);
+                    return params;
+                }
+            };
+            requestQueue.add(stringRequest);
+        }else {
+            Toast.makeText(this, "Kindly enter the Approx weight in KG", Toast.LENGTH_SHORT).show();
+        }
     }
     protected String loadData() {
         String FILENAME = "email.txt";
@@ -267,7 +269,7 @@ public class HomeCust extends AppCompatActivity
         @Override
         protected String doInBackground(String... args) {
             JSONObject params = new JSONObject();
-            String load_url = "http://139.59.47.63/fetchshop.php";
+            String load_url =getResources().getString(R.string.fetchshopurl);
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
                 @SuppressLint("SetTextI18n")
@@ -309,7 +311,7 @@ public class HomeCust extends AppCompatActivity
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(HomeCust.this,"Internet is slow. Please try again with good internet speed.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HomeCust.this,getResources().getString(R.string.slowinternet),Toast.LENGTH_SHORT).show();
                 }
             }) {
                 @Override

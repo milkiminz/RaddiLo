@@ -64,7 +64,7 @@ import java.util.Map;
 
 public class Logincust extends AppCompatActivity  {
 
-    String loginUrl = "http://139.59.47.63/logincust.php";
+    String loginUrl = getResources().getString(R.string.logincust);
 
     EditText email;
     EditText password;
@@ -81,13 +81,18 @@ public class Logincust extends AppCompatActivity  {
             finish();
         }
 
+
     }
 
     public void Login_now(View view){
+        if(!email.getText().toString().equals("")||!password.getText().toString().equals("")){
         if (isNetworkAvailable()) {
             new AttemptLogin().execute();
         }else{
-            Toast.makeText(Logincust.this,"NO INTERNET", Toast.LENGTH_LONG).show();
+            Toast.makeText(Logincust.this,getResources().getString(R.string.slowinternet), Toast.LENGTH_LONG).show();
+        }
+    }else{
+            Toast.makeText(this, getResources().getString(R.string.enteremailpassword), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -126,10 +131,10 @@ public class Logincust extends AppCompatActivity  {
                             public void onResponse(String s) {
                              pDialog.dismiss();
 
-                               if (s.equals("success")) {
+                               if (s.equals(getResources().getString(R.string.success))) {
 
                                     saveData2(em);
-                                    Toast.makeText(Logincust.this, "success", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(Logincust.this, getResources().getString(R.string.success), Toast.LENGTH_LONG).show();
                                    startActivity(new Intent(Logincust.this,HomeCust.class));
                                     finish();
                                 } else if (s.equals("failed")) {
@@ -138,7 +143,7 @@ public class Logincust extends AppCompatActivity  {
                                     Toast.makeText(Logincust.this, " Failed", Toast.LENGTH_LONG).show();
 
                                 } else {
-                                    Toast.makeText(Logincust.this, "Check Internet ", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(Logincust.this, getResources().getString(R.string.slowinternet), Toast.LENGTH_LONG).show();
 
                                 }
 

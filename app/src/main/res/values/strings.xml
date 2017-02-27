@@ -27,4 +27,28 @@
     <string name="title_activity_updatecust">updatecust</string>
     <string name="title_activity_updateshop">updateshop</string>
     <string name="title_activity_bookings">Bookings</string>
+
+
+
+    <string name="booking_url">http://139.59.47.63/fetchmyorders.php</string>
+    <string name="feedback_url">http://139.59.47.63/feedback.php</string>
+    <string name="success">success</string>
+    <string name="successfully_send">Successfully Send</string>
+    <string name="enter_query">Kindly Enter your query first!!</string>
+    <string name="homecusturl">http://139.59.47.63/bookraddiorder.php</string>
+    <string name="homeshopurl">http://139.59.47.63/fetchtodayorders.php</string>
+    <string name="successful_order">Ordered Successfully</string>
+    <string name="fetchshopurl">http://139.59.47.63/fetchshop.php</string>
+    <string name="slowinternet">Internet is slow. Please try again with good internet speed.</string>
+    <string name="logincust">http://139.59.47.63/logincust.php</string>
+    <string name="enteremailpassword">Enter your email and password!!!!</string>
+    <string name="loginshop">http://139.59.47.63/loginshop.php</string>
+    <string name="verifycust">http://139.59.47.63/verifycust.php</string>
+    <string name="verifyshop">http://139.59.47.63/verifyshop.php</string>
+    <string name="custprofile">http://139.59.47.63/getprofilecust.php</string>
+    <string name="shopprofile">http://139.59.47.63/getprofileshop.php</string>
+    <string name="registercust">http://139.59.47.63/registercust.php</string>
+    <string name="registershop">http://139.59.47.63/registershop.php</string>
+    <string name="updatecust">http://139.59.47.63/updatecustdetails.php</string>
+    <string name="updateshop">http://139.59.47.63/updateshopdetails.php</string>
 </resources>

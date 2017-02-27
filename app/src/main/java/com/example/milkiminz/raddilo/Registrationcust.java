@@ -32,7 +32,7 @@ import static com.example.milkiminz.raddilo.R.id.password;
 public class Registrationcust extends AppCompatActivity {
 
 
-    String loginUrl = "http://139.59.47.63/registercust.php";
+    String loginUrl = getResources().getString(R.string.registercust);
 
     EditText name;
     EditText email;
@@ -65,16 +65,18 @@ public class Registrationcust extends AppCompatActivity {
         pass=password.getText().toString();
         ph=phone.getText().toString();
         add=address.getText().toString();
-
-        if(isNetworkAvailable()) {
-            if (password.getText().toString().equals(confirmpassword.getText().toString())) {
-                  new AttemptRegister().execute();
-            } else {
-                Toast.makeText(Registrationcust.this, "Password did not match", Toast.LENGTH_SHORT).show();
-            }
-        }else
-            Toast.makeText(this, "NO INTERNET", Toast.LENGTH_SHORT).show();
-
+        if(!name.getText().toString().equals("")||!email.getText().toString().equals("")||!password.getText().toString().equals("")||!phone.getText().toString().equals("")||!address.getText().toString().equals("")) {
+            if (isNetworkAvailable()) {
+                if (password.getText().toString().equals(confirmpassword.getText().toString())) {
+                    new AttemptRegister().execute();
+                } else {
+                    Toast.makeText(Registrationcust.this, "Password did not match", Toast.LENGTH_SHORT).show();
+                }
+            } else
+                Toast.makeText(this, getResources().getString(R.string.slowinternet), Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(this, "Kindly fill all Fields!!", Toast.LENGTH_SHORT).show();
+        }
     }
     public boolean isNetworkAvailable() {
         ConnectivityManager cm = (ConnectivityManager)
@@ -120,10 +122,10 @@ public class Registrationcust extends AppCompatActivity {
                         public void onResponse(String s) {
                             pDialog.dismiss();
 
-                            if (s.equals("success")) {
+                            if (s.equals(getResources().getString(R.string.success))) {
 
 
-                                Toast.makeText(Registrationcust.this, "successfully Registered", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Registrationcust.this, getResources().getString(R.string.success)+" Registered", Toast.LENGTH_LONG).show();
                                 finish();
                             } else if (s.equals("failed")) {
 

@@ -77,7 +77,7 @@ public class ProfileCust extends AppCompatActivity
         }catch (JSONException e){
 
         }
-        String load_url = "http://139.59.47.63/getprofilecust.php";
+        String load_url = getResources().getString(R.string.custprofile);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
             @SuppressLint("SetTextI18n")

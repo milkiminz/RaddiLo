@@ -75,7 +75,7 @@ public class ProfileShop extends AppCompatActivity
         }catch (JSONException e){
 
         }
-        String load_url = "http://139.59.47.63/getprofileshop.php";
+        String load_url = getResources().getString(R.string.shopprofile);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
             @SuppressLint("SetTextI18n")

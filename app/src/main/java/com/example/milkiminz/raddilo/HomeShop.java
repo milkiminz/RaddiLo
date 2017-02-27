@@ -24,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,6 +52,7 @@ public class HomeShop extends AppCompatActivity
         setSupportActionBar(toolbar);
         orderlist=(ListView)findViewById(R.id.orderlist);
         requestQueue= Volley.newRequestQueue(HomeShop.this);
+        FirebaseMessaging.getInstance().subscribeToTopic("updates");
         JSONObject params = new JSONObject();
         try{
             params.put("email",loadData());
@@ -58,7 +60,7 @@ public class HomeShop extends AppCompatActivity
         }catch (JSONException e){
 
         }
-        String load_url = "http://139.59.47.63/fetchtodayorders.php";
+        String load_url = getResources().getString(R.string.homeshopurl);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
             @SuppressLint("SetTextI18n")
             @Override

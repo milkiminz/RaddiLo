@@ -36,11 +36,14 @@ public class Feedback extends AppCompatActivity {
     }
     public void sendfeedback(View view) {
         fb = gfb.getText().toString();
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://139.59.47.63/feedback.php", new Response.Listener<String>() {
+        if (!fb.equals("")){
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, getResources().getString(R.string.feedback_url), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if (response.equals("success")) {
-                    Toast.makeText(Feedback.this, "Successfully Send", Toast.LENGTH_LONG).show();
+                if (response.equals(getResources().getString(R.string.success))) {
+                    Toast.makeText(Feedback.this, getResources().getString(R.string.successfully_send), Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {
@@ -64,6 +67,9 @@ public class Feedback extends AppCompatActivity {
 
 
         requestQueue.add(stringRequest);
+        }else {
+            Toast.makeText(this, getResources().getString(R.string.enter_query), Toast.LENGTH_SHORT).show();
+        }
     }
 
     protected String loadData() {

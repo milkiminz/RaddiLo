@@ -3,6 +3,7 @@ package com.example.milkiminz.raddilo;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -11,7 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import com.example.milkiminz.raddilo.R;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -29,7 +30,7 @@ import java.util.Map;
 public class Registrationshop extends AppCompatActivity {
 
 
-    String loginUrl = "http://139.59.47.63/registershop.php";
+    String loginUrl;
 
     EditText name;
     EditText email;
@@ -44,6 +45,7 @@ public class Registrationshop extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loginUrl =getResources().getString(R.string.registershop);
         setContentView(R.layout.activity_registrationshop);
         name = (EditText) findViewById(R.id.sname);
         email = (EditText) findViewById(R.id.semail);
@@ -62,16 +64,18 @@ public class Registrationshop extends AppCompatActivity {
         pass=password.getText().toString();
         ph=phone.getText().toString();
         add=address.getText().toString();
-
-        if(isNetworkAvailable()) {
-            if (password.getText().toString().equals(confirmpassword.getText().toString())) {
-                new AttemptRegister().execute();
-            } else {
-                Toast.makeText(Registrationshop.this, "Password did not match", Toast.LENGTH_SHORT).show();
-            }
-        }else
-            Toast.makeText(this, "NO INTERNET", Toast.LENGTH_SHORT).show();
-
+        if(!name.getText().toString().equals("")||!email.getText().toString().equals("")||!password.getText().toString().equals("")||!phone.getText().toString().equals("")||!address.getText().toString().equals("")) {
+            if (isNetworkAvailable()) {
+                if (password.getText().toString().equals(confirmpassword.getText().toString())) {
+                    new AttemptRegister().execute();
+                } else {
+                    Toast.makeText(Registrationshop.this, "Password did not match", Toast.LENGTH_SHORT).show();
+                }
+            } else
+                Toast.makeText(this, "NO INTERNET", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(this, "Kindly fill all Fields!!", Toast.LENGTH_SHORT).show();
+        }
     }
     public boolean isNetworkAvailable() {
         ConnectivityManager cm = (ConnectivityManager)
@@ -115,10 +119,10 @@ public class Registrationshop extends AppCompatActivity {
                         public void onResponse(String s) {
                             pDialog.dismiss();
 
-                            if (s.equals("success")) {
+                            if (s.equals(getResources().getString(R.string.success))) {
 
 
-                                Toast.makeText(Registrationshop.this, "successfully Registered", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Registrationshop.this, getResources().getString(R.string.success)+" Registered", Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(Registrationshop.this,otpshop.class));
                                 finish();
                             } else if (s.equals("failed")) {

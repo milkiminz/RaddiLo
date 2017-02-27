@@ -42,11 +42,11 @@ public class updateshop extends AppCompatActivity {
         requestQueue= Volley.newRequestQueue(updateshop.this);
     }
     public void update1(View view){
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://139.59.47.63/updateshopdetails.php", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, getResources().getString(R.string.updateshop), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if(response.equals("success")) {
-                    Toast.makeText(updateshop.this, "Successfully updateded", Toast.LENGTH_LONG).show();
+                if(response.equals(getResources().getString(R.string.success))) {
+                    Toast.makeText(updateshop.this, getResources().getString(R.string.success)+" Updated", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(updateshop.this,ProfileShop.class));
                     finish();
                 }

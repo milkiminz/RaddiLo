@@ -64,7 +64,7 @@ import java.util.Map;
 
 public class Loginshop extends AppCompatActivity  {
 
-    String loginUrl = "http://139.59.47.63/loginshop.php";
+    String loginUrl;
 
     EditText email;
     EditText password;
@@ -74,6 +74,7 @@ public class Loginshop extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logincust);
+        loginUrl = getResources().getString(R.string.loginshop);
         email = (EditText) findViewById(R.id.cemail);
         password = (EditText) findViewById(R.id.cpassword);
         if(!loadData().equals("")){
@@ -84,10 +85,14 @@ public class Loginshop extends AppCompatActivity  {
     }
 
     public void Login_now(View view){
-        if (isNetworkAvailable()) {
-            new AttemptLogin().execute();
+        if(!email.getText().toString().equals("")||!password.getText().toString().equals("")){
+            if (isNetworkAvailable()) {
+                new AttemptLogin().execute();
+            }else{
+                Toast.makeText(Loginshop.this,getResources().getString(R.string.slowinternet), Toast.LENGTH_LONG).show();
+            }
         }else{
-            Toast.makeText(Loginshop.this,"NO INTERNET", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getResources().getString(R.string.enteremailpassword), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -126,10 +131,10 @@ public class Loginshop extends AppCompatActivity  {
                         public void onResponse(String s) {
                             pDialog.dismiss();
 
-                            if (s.equals("success")) {
+                            if (s.equals(getResources().getString(R.string.success))) {
 
                                 saveData2(em);
-                                Toast.makeText(Loginshop.this, "success", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Loginshop.this, getResources().getString(R.string.success), Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(Loginshop.this,HomeShop.class));
                                 finish();
                             } else if (s.equals("failed")) {
@@ -138,7 +143,7 @@ public class Loginshop extends AppCompatActivity  {
                                 Toast.makeText(Loginshop.this, " Failed", Toast.LENGTH_LONG).show();
 
                             } else {
-                                Toast.makeText(Loginshop.this, "Check Internet ", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Loginshop.this, getResources().getString(R.string.slowinternet), Toast.LENGTH_LONG).show();
 
                             }
 

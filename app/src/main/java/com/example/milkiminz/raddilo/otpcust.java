@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class otpcust extends AppCompatActivity {
 
-    String Url = "http://139.59.47.63/verifycust.php";
+    String Url = getResources().getString(R.string.verifycust);
     ProgressDialog pDialog;
     EditText cotp;
     String ss;
@@ -47,11 +47,14 @@ public class otpcust extends AppCompatActivity {
 
     public void sub(View view)
     {
-
+if (!cotp.getText().toString().equals("")){
         ss=cotp.getText().toString();
         new verify().execute();
 
 
+    }else {
+    Toast.makeText(this, "Enter the OTP", Toast.LENGTH_SHORT).show();
+}
     }
 
 
@@ -117,10 +120,10 @@ public class otpcust extends AppCompatActivity {
                         public void onResponse(String s) {
                             pDialog.dismiss();
 
-                            if (s.equals("success")) {
+                            if (s.equals(getResources().getString(R.string.success))) {
 
 
-                                Toast.makeText(otpcust.this, "successfully Verified", Toast.LENGTH_LONG).show();
+                                Toast.makeText(otpcust.this, getResources().getString(R.string.success)+" Verified", Toast.LENGTH_LONG).show();
 
                             } else if (s.equals("failed")) {
 

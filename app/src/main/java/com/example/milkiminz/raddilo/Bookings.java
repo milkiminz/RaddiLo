@@ -59,13 +59,13 @@ public class Bookings extends AppCompatActivity
         }catch (JSONException e){
 
         }
-        String load_url = "http://139.59.47.63/fetchmyorders.php";
+        String load_url = getResources().getString(R.string.booking_url);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(JSONObject response) {
                 try{
-                    JSONArray jsonArray=response.getJSONArray("orderdetails");
+                    JSONArray jsonArray=response.getJSONArray("myorders");
                     int l=jsonArray.length();
                     nm=new String[l];
                     address=new String[l];
