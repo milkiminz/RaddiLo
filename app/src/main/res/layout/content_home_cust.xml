@@ -37,12 +37,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="49dp"
                 android:id="@+id/s1"
-                android:text="Newspapers/Papers:     "
+                android:text="@string/paper"
                 android:layout_below="@+id/textView3"
                 android:layout_centerHorizontal="true" />
 
             <Switch
-                android:text="Metal                                 "
+                android:text="@string/metal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/s1"
@@ -51,7 +51,7 @@
                 android:id="@+id/s2" />
 
             <Switch
-                android:text="Glass                                 "
+                android:text="@string/glass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/s2"
@@ -60,7 +60,7 @@
                 android:id="@+id/s3" />
 
             <Switch
-                android:text="Plastic                               "
+                android:text="@string/plastic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="17dp"
@@ -69,7 +69,7 @@
                 android:layout_centerHorizontal="true" />
 
             <Switch
-                android:text="Others                               "
+                android:text="@string/others"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/s4"
@@ -78,7 +78,7 @@
                 android:id="@+id/s5" />
 
             <TextView
-                android:text="Select Shop"
+                android:text="@string/selectshop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/s5"
@@ -97,7 +97,7 @@
                 android:id="@+id/spinnershop" />
 
             <TextView
-                android:text="Approx weight:"
+                android:text="@string/aw"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView6"
@@ -111,7 +111,7 @@
                 android:layout_marginLeft="20dp" />
 
             <Button
-                android:text="SELL NOW"
+                android:text="@string/sellnow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/aw"
@@ -126,7 +126,7 @@
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/aw"
-                android:hint="In KG"
+                android:hint="@string/kg"
                 android:layout_alignTop="@+id/textView6"
                 android:layout_alignLeft="@+id/sellnow"
                 android:layout_alignStart="@+id/sellnow"

@@ -1,4 +1,11 @@
 apply plugin: 'com.android.application'
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+
+// Initialize a new Properties() object called keystoreProperties.
+def keystoreProperties = new Properties()
+
+// Load your keystore.properties file into the keystoreProperties object.
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
     compileSdkVersion 24
@@ -13,7 +20,14 @@ android {
     }
     buildTypes {
         release {
-
+            signingConfigs {
+                config {
+                    keyAlias keystoreProperties['keyAlias']
+                    keyPassword keystoreProperties['keyPassword']
+                    storeFile file("raddilo.jks")
+                    storePassword keystoreProperties['storePassword']
+                }
+            }
             debuggable false
             jniDebuggable false
             renderscriptDebuggable false

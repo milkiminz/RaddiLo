@@ -11,7 +11,7 @@
     tools:context="com.example.milkiminz.raddilo.Feedback">
 
     <TextView
-        android:text="FeedBack"
+        android:text="@string/feedback"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -20,7 +20,7 @@
         android:id="@+id/tvfb" />
 
     <Button
-        android:text="Send"
+        android:text="@string/send"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/feedback"
@@ -36,7 +36,7 @@
         android:ems="10"
         android:layout_marginTop="54dp"
         android:id="@+id/feedback"
-        android:hint="Give us your Feedback"
+        android:hint="@string/givefeedback"
         android:layout_below="@+id/tvfb"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

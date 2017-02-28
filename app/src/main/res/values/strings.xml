@@ -9,7 +9,7 @@
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
+    <string name="prompt_password">Password </string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
@@ -61,4 +61,45 @@
     <string name="vf">Verification Failed</string>
     <string name="enterweight">Kindly enter the Approx weight in KG</string>
 
+
+    <string name="name">Name:</string>
+    <string name="email">Email:</string>
+    <string name="phone">Phone:</string>
+    <string name="quantity">Quantity:</string>
+    <string name="address">Address:</string>
+    <string name="paper">Paper:</string>
+    <string name="metal">Metal:</string>
+    <string name="plastic">Plastic:</string>
+    <string name="glass">Glass:</string>
+    <string name="others">Others:</string>
+    <string name="raddilo">Raddi Lo</string>
+    <string name="quote">Recycle at it's best !</string>
+    <string name="shopname">Shop Name:</string>
+    <string name="shopemail">Shop Email:</string>
+    <string name="shopphone">Shop Phone:</string>
+    <string name="shopadd">Shop Address:</string>
+    <string name="update">Update</string>
+    <string name="todayorder">Today's Order</string>
+    <string name="selectshop">Select Shop</string>
+    <string name="aw">Approx weight</string>
+    <string name="sellnow">Sell Now</string>
+    <string name="kg">IN KG</string>
+    <string name="myorder">My Orders</string>
+    <string name="accalready">Already Have an Account</string>
+    <string name="registration">Registration</string>
+    <string name="submit">Submit</string>
+    <string name="confirmpassword">Confirm Password</string>
+    <string name="resendotp">Resend OTP</string>
+    <string name="givefeedback">Give us your Feedback</string>
+    <string name="send">Send</string>
+    <string name="feedback">FeedBack</string>
+    <string name="support">Support us to Build a clean World As:</string>
+    <string name="customer">Customer</string>
+    <string name="recycler">Recycler</string>
+    <string name="abtus">About Us</string>
+    <string name="para">We believe that recycling is the best way to reduce waste.we are building an app to promote recycling. Recyclers will be collecting the to be recycled product and the seller or the customers will be selling them out when they want to.   They could easily choose the nearby recycler (collecting items for recycling)around them and sell their items for recycling.selecting the type of items they want to sell(paper,plastic,metal,glass). . </string>
+    <string name="github">Github:  https://github.com/milkiminz</string>
+    <string name="milki">Name:  Milki Minz</string>
+    <string name="mymail">Email: wwwmilki.minz096@gmail.com</string>
+    <string name="abtdev">About Developer</string>
 </resources>

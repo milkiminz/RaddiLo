@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.milkiminz.raddilo.Registrationshop">
+    tools:context="com.example.milkiminz.raddilo.RegistrationShop">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:text="Registration"
+                android:text="@string/registration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView10"
@@ -38,7 +38,7 @@
                 android:ems="10"
                 android:id="@+id/semail"
                 android:layout_marginTop="25dp"
-                android:hint="Email"
+                android:hint="@string/email"
                 android:layout_below="@+id/sname"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -53,7 +53,7 @@
                 android:layout_below="@+id/semail"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="50dp"
-                android:hint="Password"
+                android:hint="@string/prompt_password"
                 android:gravity="center_vertical|center_horizontal" />
 
             <EditText
@@ -65,7 +65,7 @@
                 android:layout_marginTop="27dp"
                 android:layout_below="@+id/spassword"
                 android:layout_centerHorizontal="true"
-                android:hint="Confirm Password"
+                android:hint="@string/confirmpassword"
                 android:gravity="center_vertical|center_horizontal" />
 
             <EditText
@@ -77,7 +77,7 @@
                 android:id="@+id/sphone"
                 android:layout_below="@+id/sconfirmpassword"
                 android:layout_centerHorizontal="true"
-                android:hint="Phone"
+                android:hint="@string/phone"
                 android:gravity="center_vertical|center_horizontal" />
 
             <EditText
@@ -89,11 +89,11 @@
                 android:layout_below="@+id/sphone"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="24dp"
-                android:hint="Address"
+                android:hint="@string/address"
                 android:gravity="center_vertical|center_horizontal" />
 
             <Button
-                android:text="Submit"
+                android:text="@string/submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/saddress"
@@ -109,14 +109,14 @@
                 android:ems="10"
                 android:layout_marginTop="36dp"
                 android:id="@+id/sname"
-                android:hint="Name"
+                android:hint="@string/name"
                 android:gravity="center_vertical|center_horizontal"
                 android:layout_below="@+id/textView10"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
 
             <TextView
-                android:text="Already have an Account?"
+                android:text="@string/accalready"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ssubmit"
@@ -126,7 +126,7 @@
                 android:textSize="36sp" />
 
             <Button
-                android:text="LogIn"
+                android:text="@string/title_activity_loginshop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textView4"

@@ -37,7 +37,7 @@
                     android:id="@+id/cemail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Email:"
+                    android:hint="@string/email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -50,7 +50,7 @@
                     android:id="@+id/cpassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password"
+                    android:hint="@string/prompt_password"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="LogIn"
+                android:text="@string/loginshop"
                 android:textStyle="bold" />
 
         </LinearLayout>

@@ -14,7 +14,7 @@
     tools:showIn="@layout/app_bar_home_shop">
 
     <TextView
-        android:text="Today's Orders"
+        android:text="@string/todayorder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

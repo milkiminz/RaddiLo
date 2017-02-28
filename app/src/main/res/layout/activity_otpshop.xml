@@ -11,7 +11,7 @@
     tools:context="com.example.milkiminz.raddilo.otpcust">
 
     <Button
-        android:text="Resend opt"
+        android:text="@string/resendotp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/sreotp"
@@ -20,7 +20,7 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:text="Submit opt"
+        android:text="@string/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ssopt"
@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:hint="Enter Otp"
+        android:hint="@string/enterotp"
         android:ems="10"
         android:id="@+id/sotp"
         android:layout_marginBottom="140dp"

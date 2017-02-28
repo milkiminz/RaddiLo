@@ -15,7 +15,7 @@
 
 
     <TextView
-        android:text="Support us to Build a clean World As:"
+        android:text="@string/support"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView2"
@@ -29,7 +29,7 @@
         android:textColorLink="@android:color/background_dark" />
 
     <Button
-        android:text="Customer"
+        android:text="@string/customer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button"
@@ -46,7 +46,7 @@
         android:onClick="customer" />
 
     <Button
-        android:text="Recycler"
+        android:text="@string/recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 

@@ -18,7 +18,7 @@ public class MyOrder extends ArrayAdapter<String> {
 
         TextView textViewName,textViewEmail,textViewPhone,textViewAdd,textViewQty,textViewPpr,textViewMel,textViewGls,textViewPls,textViewOth;
 
-public MyOrder(Activity context, String[] name, String[] email, String[] phone, String[] add, String[] qty, String[] ppr, String[] gls, String[] mel, String[] oth, String[] pls) {
+    public MyOrder(Activity context, String[] name, String[] email, String[] phone, String[] add, String[] qty, String[] ppr, String[] gls, String[] mel, String[] oth, String[] pls) {
         super(context, R.layout.myorder, name);
         this.context = context;
         this.name = name;

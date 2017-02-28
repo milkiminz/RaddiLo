@@ -23,7 +23,7 @@ import com.android.volley.toolbox.Volley;
 import java.util.Hashtable;
 import java.util.Map;
 
-public class Registrationcust extends AppCompatActivity {
+public class RegistrationCust extends AppCompatActivity {
 
 
     String loginUrl;
@@ -64,7 +64,7 @@ public class Registrationcust extends AppCompatActivity {
                 if (password.getText().toString().equals(confirmpassword.getText().toString())) {
                     new AttemptRegister().execute();
                 } else {
-                    Toast.makeText(Registrationcust.this, getResources().getString(R.string.differentpassword), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistrationCust.this, getResources().getString(R.string.differentpassword), Toast.LENGTH_SHORT).show();
                 }
             } else
                 Toast.makeText(this, getResources().getString(R.string.slowinternet), Toast.LENGTH_SHORT).show();
@@ -85,7 +85,7 @@ public class Registrationcust extends AppCompatActivity {
     }
 
     public void login(View view){
-        startActivity(new Intent(Registrationcust.this,LoginCust.class));
+        startActivity(new Intent(RegistrationCust.this,LoginCust.class));
     }
     class AttemptRegister extends AsyncTask<String, String, String> {
 
@@ -97,7 +97,7 @@ public class Registrationcust extends AppCompatActivity {
         protected void onPreExecute()
         {
             super.onPreExecute();
-            pDialog = new ProgressDialog(Registrationcust.this);
+            pDialog = new ProgressDialog(RegistrationCust.this);
             pDialog.setMessage("Registering....");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -119,16 +119,16 @@ public class Registrationcust extends AppCompatActivity {
                             if (s.equals(getResources().getString(R.string.success))) {
 
 
-                                Toast.makeText(Registrationcust.this, getResources().getString(R.string.success)+" Registered", Toast.LENGTH_LONG).show();
+                                Toast.makeText(RegistrationCust.this, getResources().getString(R.string.success)+" Registered", Toast.LENGTH_LONG).show();
                                 finish();
                             } else if (s.equals(getResources().getString(R.string.failed))) {
 
 
-                                Toast.makeText(Registrationcust.this, getResources().getString(R.string.rf), Toast.LENGTH_LONG).show();
+                                Toast.makeText(RegistrationCust.this, getResources().getString(R.string.rf), Toast.LENGTH_LONG).show();
 
                             }
                             else if(s.equals(getResources().getString(R.string.already))){
-                                Toast.makeText(Registrationcust.this, getResources().getString(R.string.ar), Toast.LENGTH_LONG).show();
+                                Toast.makeText(RegistrationCust.this, getResources().getString(R.string.ar), Toast.LENGTH_LONG).show();
 
                             }
 
@@ -142,7 +142,7 @@ public class Registrationcust extends AppCompatActivity {
                     pDialog.dismiss();
 
 
-                    Toast.makeText(Registrationcust.this, volleyError.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegistrationCust.this, volleyError.getMessage(), Toast.LENGTH_LONG).show();
 
 
                     //get response body and parse with appropriate encoding
@@ -169,7 +169,7 @@ public class Registrationcust extends AppCompatActivity {
 
 
             //Creating a Request Queue
-            requestQueue = Volley.newRequestQueue(Registrationcust.this);
+            requestQueue = Volley.newRequestQueue(RegistrationCust.this);
 
             //Adding request to the queue
             requestQueue.add(stringRequest);
