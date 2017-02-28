@@ -11,14 +11,14 @@ import android.widget.TextView;
  * Created by Milki Minz on 2/27/2017.
  */
 
-public class myorder extends ArrayAdapter<String> {
+public class MyOrder extends ArrayAdapter<String> {
 
         Activity context;
         String[] name,email,phone,add,qty,ppr,gls,pls,mel,oth;
 
         TextView textViewName,textViewEmail,textViewPhone,textViewAdd,textViewQty,textViewPpr,textViewMel,textViewGls,textViewPls,textViewOth;
 
-public myorder(Activity context, String[] name, String[] email, String[] phone, String[] add,String[] qty,String[] ppr,String[] gls,String[] mel,String[] oth,String[] pls) {
+public MyOrder(Activity context, String[] name, String[] email, String[] phone, String[] add, String[] qty, String[] ppr, String[] gls, String[] mel, String[] oth, String[] pls) {
         super(context, R.layout.myorder, name);
         this.context = context;
         this.name = name;

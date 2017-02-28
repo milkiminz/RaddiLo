@@ -20,14 +20,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
-
-import static com.example.milkiminz.raddilo.R.id.email;
-import static com.example.milkiminz.raddilo.R.id.password;
 
 public class Registrationcust extends AppCompatActivity {
 
@@ -91,7 +85,7 @@ public class Registrationcust extends AppCompatActivity {
     }
 
     public void login(View view){
-        startActivity(new Intent(Registrationcust.this,Logincust.class));
+        startActivity(new Intent(Registrationcust.this,LoginCust.class));
     }
     class AttemptRegister extends AsyncTask<String, String, String> {
 

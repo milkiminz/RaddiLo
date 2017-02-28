@@ -3,9 +3,6 @@ package com.example.milkiminz.raddilo;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -24,7 +21,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -91,7 +87,7 @@ public class HomeShop extends AppCompatActivity
                         mel[i]=jsonObject.getString("bmetal");
                         oth[i]=jsonObject.getString("bother");
                     }
-                    recycleorder rc=new recycleorder(HomeShop.this,nm,mail,ph,address,qty,ppr,gls,mel,oth,pls);
+                    RecycleOrder rc=new RecycleOrder(HomeShop.this,nm,mail,ph,address,qty,ppr,gls,mel,oth,pls);
                     orderlist.setAdapter(rc);
                 }catch (Exception e){
 
@@ -185,7 +181,7 @@ public class HomeShop extends AppCompatActivity
             File dir = getFilesDir();
             File file = new File(dir, "email.txt");
             file.delete();
-            Intent p=new Intent(this,Loginshop.class);
+            Intent p=new Intent(this,LoginShop.class);
             startActivity(p);
             finish();
 

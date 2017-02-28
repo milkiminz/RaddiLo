@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -60,7 +59,7 @@ public class ProfileShop extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                Intent i=new Intent(ProfileShop.this,updateshop.class);
+                Intent i=new Intent(ProfileShop.this,UpdateShop.class);
                 i.putExtra("name",nm.getText().toString());
                 i.putExtra("email",em.getText().toString());
                 i.putExtra("address",add.getText().toString());
@@ -176,7 +175,7 @@ public class ProfileShop extends AppCompatActivity
             File dir = getFilesDir();
             File file = new File(dir, "email.txt");
             file.delete();
-            Intent p=new Intent(this,Loginshop.class);
+            Intent p=new Intent(this,LoginShop.class);
             startActivity(p);
             finish();
 

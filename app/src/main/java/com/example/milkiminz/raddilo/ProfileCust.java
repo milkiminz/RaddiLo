@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,8 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,7 +36,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.jar.JarException;
 
 public class ProfileCust extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -62,7 +58,7 @@ public class ProfileCust extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                Intent i=new Intent(ProfileCust.this,updatecust.class);
+                Intent i=new Intent(ProfileCust.this,UpdateCustomer.class);
                 i.putExtra("name",nm.getText().toString());
                 i.putExtra("email",em.getText().toString());
                 i.putExtra("address",add.getText().toString());
@@ -183,7 +179,7 @@ public class ProfileCust extends AppCompatActivity
             File dir = getFilesDir();
             File file = new File(dir, "email.txt");
             file.delete();
-            Intent p=new Intent(this,Logincust.class);
+            Intent p=new Intent(this,LoginCust.class);
             startActivity(p);
             finish();
 

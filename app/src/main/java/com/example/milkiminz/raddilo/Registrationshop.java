@@ -3,7 +3,6 @@ package com.example.milkiminz.raddilo;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -12,7 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.example.milkiminz.raddilo.R;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -21,9 +20,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -90,7 +86,7 @@ public class Registrationshop extends AppCompatActivity {
     }
 
     public void login(View view){
-        startActivity(new Intent(Registrationshop.this,Loginshop.class));
+        startActivity(new Intent(Registrationshop.this,LoginShop.class));
     }
     class AttemptRegister extends AsyncTask<String, String, String> {
 

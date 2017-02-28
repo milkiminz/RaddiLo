@@ -20,7 +20,7 @@ import com.android.volley.toolbox.Volley;
 import java.util.Hashtable;
 import java.util.Map;
 
-public class updateshop extends AppCompatActivity {
+public class UpdateShop extends AppCompatActivity {
 
     EditText nm,ph,add;
     String em;
@@ -39,15 +39,15 @@ public class updateshop extends AppCompatActivity {
         add.setText(i.getStringExtra("address"));
         ph.setText(i.getStringExtra("phone"));
         em=i.getStringExtra("email");
-        requestQueue= Volley.newRequestQueue(updateshop.this);
+        requestQueue= Volley.newRequestQueue(UpdateShop.this);
     }
     public void update1(View view){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, getResources().getString(R.string.updateshop), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if(response.equals(getResources().getString(R.string.success))) {
-                    Toast.makeText(updateshop.this, getResources().getString(R.string.success)+" Updated", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(updateshop.this,ProfileShop.class));
+                    Toast.makeText(UpdateShop.this, getResources().getString(R.string.success)+" Updated", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(UpdateShop.this,ProfileShop.class));
                     finish();
                 }
             }
@@ -55,7 +55,7 @@ public class updateshop extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(updateshop.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateShop.this,error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         }){
             @Override

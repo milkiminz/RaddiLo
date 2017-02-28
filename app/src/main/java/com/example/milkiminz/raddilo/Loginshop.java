@@ -1,40 +1,17 @@
 package com.example.milkiminz.raddilo;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
-import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.app.LoaderManager.LoaderCallbacks;
 
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.AsyncTask;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -45,24 +22,17 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.List;
 import java.util.Map;
 
 
-public class Loginshop extends AppCompatActivity  {
+public class LoginShop extends AppCompatActivity  {
 
     String loginUrl;
 
@@ -78,7 +48,7 @@ public class Loginshop extends AppCompatActivity  {
         email = (EditText) findViewById(R.id.cemail);
         password = (EditText) findViewById(R.id.cpassword);
         if(!loadData().equals("")){
-            startActivity(new Intent(Loginshop.this,HomeShop.class));
+            startActivity(new Intent(LoginShop.this,HomeShop.class));
             finish();
         }
 
@@ -89,7 +59,7 @@ public class Loginshop extends AppCompatActivity  {
             if (isNetworkAvailable()) {
                 new AttemptLogin().execute();
             }else{
-                Toast.makeText(Loginshop.this,getResources().getString(R.string.slowinternet), Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginShop.this,getResources().getString(R.string.slowinternet), Toast.LENGTH_LONG).show();
             }
         }else{
             Toast.makeText(this, getResources().getString(R.string.enteremailpassword), Toast.LENGTH_SHORT).show();
@@ -112,7 +82,7 @@ public class Loginshop extends AppCompatActivity  {
         protected void onPreExecute()
         {
             super.onPreExecute();
-            pDialog = new ProgressDialog(Loginshop.this);
+            pDialog = new ProgressDialog(LoginShop.this);
             pDialog.setMessage("Logging in....");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -134,16 +104,16 @@ public class Loginshop extends AppCompatActivity  {
                             if (s.equals(getResources().getString(R.string.success))) {
 
                                 saveData2(em);
-                                Toast.makeText(Loginshop.this, getResources().getString(R.string.success), Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(Loginshop.this,HomeShop.class));
+                                Toast.makeText(LoginShop.this, getResources().getString(R.string.success), Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(LoginShop.this,HomeShop.class));
                                 finish();
                             } else if (s.equals(getResources().getString(R.string.failed))) {
 
 
-                                Toast.makeText(Loginshop.this, getResources().getString(R.string.failed), Toast.LENGTH_LONG).show();
+                                Toast.makeText(LoginShop.this, getResources().getString(R.string.failed), Toast.LENGTH_LONG).show();
 
                             } else {
-                                Toast.makeText(Loginshop.this, getResources().getString(R.string.slowinternet), Toast.LENGTH_LONG).show();
+                                Toast.makeText(LoginShop.this, getResources().getString(R.string.slowinternet), Toast.LENGTH_LONG).show();
 
                             }
 
@@ -156,7 +126,7 @@ public class Loginshop extends AppCompatActivity  {
                     pDialog.dismiss();
 
 
-                    Toast.makeText(Loginshop.this, volleyError.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginShop.this, volleyError.getMessage(), Toast.LENGTH_LONG).show();
 
 
                     //get response body and parse with appropriate encoding
@@ -180,7 +150,7 @@ public class Loginshop extends AppCompatActivity  {
 
 
             //Creating a Request Queue
-            requestQueue = Volley.newRequestQueue(Loginshop.this);
+            requestQueue = Volley.newRequestQueue(LoginShop.this);
 
             //Adding request to the queue
             requestQueue.add(stringRequest);

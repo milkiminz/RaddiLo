@@ -7,14 +7,14 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class recycleorder extends ArrayAdapter<String> {
+public class RecycleOrder extends ArrayAdapter<String> {
 
     Activity context;
     String[] name,email,phone,add,qty,ppr,gls,pls,mel,oth;
 
     TextView textViewName,textViewEmail,textViewPhone,textViewAdd,textViewQty,textViewPpr,textViewMel,textViewGls,textViewPls,textViewOth;
 
-    public recycleorder(Activity context, String[] name, String[] email, String[] phone, String[] add,String[] qty,String[] ppr,String[] gls,String[] mel,String[] oth,String[] pls) {
+    public RecycleOrder(Activity context, String[] name, String[] email, String[] phone, String[] add, String[] qty, String[] ppr, String[] gls, String[] mel, String[] oth, String[] pls) {
         super(context, R.layout.singleorder, name);
         this.context = context;
         this.name = name;

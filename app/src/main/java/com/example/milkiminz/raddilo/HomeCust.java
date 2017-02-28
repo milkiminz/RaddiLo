@@ -5,8 +5,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,7 +16,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -32,7 +29,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -46,8 +42,6 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
-
-import static com.example.milkiminz.raddilo.R.id.fab;
 
 public class HomeCust extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -211,7 +205,7 @@ public class HomeCust extends AppCompatActivity
             File dir = getFilesDir();
             File file = new File(dir, "email.txt");
             file.delete();
-            Intent p=new Intent(this,Logincust.class);
+            Intent p=new Intent(this,LoginCust.class);
             startActivity(p);
             finish();
 

@@ -25,10 +25,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Logincust"
+            android:name=".LoginCust"
             android:label="@string/title_activity_logincust" />
         <activity
-            android:name=".Loginshop"
+            android:name=".LoginShop"
             android:label="@string/title_activity_loginshop" />
         <activity android:name=".Registrationcust" />
         <activity android:name=".Registrationshop" />
@@ -54,11 +54,11 @@
         <activity android:name=".Feedback" />
         <activity android:name=".AboutDevelopers" />
         <activity
-            android:name=".updatecust"
+            android:name=".UpdateCustomer"
             android:label="@string/title_activity_updatecust"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".updateshop"
+            android:name=".UpdateShop"
             android:label="@string/title_activity_updateshop"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
