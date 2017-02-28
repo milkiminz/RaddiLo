@@ -54,7 +54,7 @@ public class RegistrationShop extends AppCompatActivity {
     }
 
 
-    public void Check(View view) {
+    public void Check(View view) { //when button is being clicked
         nm=name.getText().toString();
         em=email.getText().toString();
         pass=password.getText().toString();

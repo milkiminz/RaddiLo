@@ -37,7 +37,7 @@ public class MyOrder extends ArrayAdapter<String> {
 public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
         View view = inflater.inflate(R.layout.myorder,null,true);
-
+         //listview implementation
         textViewName = (TextView)view.findViewById(R.id.shopname);
         textViewEmail = (TextView)view.findViewById(R.id.shopemail);
         textViewPhone = (TextView)view.findViewById(R.id.shopphone);

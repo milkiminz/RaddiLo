@@ -53,7 +53,7 @@ public class RegistrationCust extends AppCompatActivity {
     }
 
 
-    public void Check(View view) {
+    public void Check(View view) { //when button is clicked
         nm=name.getText().toString();
         em=email.getText().toString();
         pass=password.getText().toString();
@@ -69,7 +69,7 @@ public class RegistrationCust extends AppCompatActivity {
             } else
                 Toast.makeText(this, getResources().getString(R.string.slowinternet), Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(this, getResources().getString(R.string.fillfields), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.fillfields), Toast.LENGTH_SHORT).show();  //if fields are empty
         }
     }
     public boolean isNetworkAvailable() {
@@ -108,6 +108,7 @@ public class RegistrationCust extends AppCompatActivity {
 
 
 
+            //StringRequest function
 
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, loginUrl,

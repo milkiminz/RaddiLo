@@ -60,10 +60,10 @@ public class LoginCust extends AppCompatActivity  {
         if (isNetworkAvailable()) {
             new AttemptLogin().execute();
         }else{
-            Toast.makeText(LoginCust.this,getResources().getString(R.string.slowinternet), Toast.LENGTH_LONG).show();
+            Toast.makeText(LoginCust.this,getResources().getString(R.string.slowinternet), Toast.LENGTH_LONG).show();//for slow interner
         }
     }else{
-            Toast.makeText(this, getResources().getString(R.string.enteremailpassword), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.enteremailpassword), Toast.LENGTH_SHORT).show();//for wrong email or password
         }
     }
 

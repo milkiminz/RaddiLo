@@ -33,7 +33,7 @@ public class RecycleOrder extends ArrayAdapter<String> {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
         View view = inflater.inflate(R.layout.singleorder,null,true);
-
+        //setting values
         textViewName = (TextView)view.findViewById(R.id.custname);
         textViewEmail = (TextView)view.findViewById(R.id.custemail);
         textViewPhone = (TextView)view.findViewById(R.id.custphone);
