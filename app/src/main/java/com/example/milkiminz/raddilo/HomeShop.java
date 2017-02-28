@@ -63,6 +63,7 @@ public class HomeShop extends AppCompatActivity
             public void onResponse(JSONObject response) {
                 try{
                     JSONArray jsonArray=response.getJSONArray("orderdetails");
+                    //entering the values in array
                     int l=jsonArray.length();
                     nm=new String[l];
                     address=new String[l];

@@ -127,7 +127,7 @@ public class otpshop extends AppCompatActivity {
                             } else if (s.equals(getResources().getString(R.string.failed))) {
 
 
-                                Toast.makeText(otpshop.this, getResources().getString(R.string.vf), Toast.LENGTH_LONG).show();
+                                Toast.makeText(otpshop.this, getResources().getString(R.string.vf), Toast.LENGTH_LONG).show();//otp does not match
 
                             }
 

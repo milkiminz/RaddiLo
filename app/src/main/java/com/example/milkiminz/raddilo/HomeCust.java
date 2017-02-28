@@ -99,8 +99,9 @@ public class HomeCust extends AppCompatActivity
         getMenuInflater().inflate(R.menu.home_cust, menu);
         return true;
     }
+
     public void sellnow(View view){
-        if(!aw.getText().toString().equals("")) {
+        if(!aw.getText().toString().equals("")) { //checking the values
             if (s1.isChecked()) {
                 s1string = "yes";
 
@@ -165,6 +166,7 @@ public class HomeCust extends AppCompatActivity
             };
             requestQueue.add(stringRequest);
         }else {
+            //if approx weight is empty
             Toast.makeText(this, getResources().getString(R.string.enterweight), Toast.LENGTH_SHORT).show();
         }
     }

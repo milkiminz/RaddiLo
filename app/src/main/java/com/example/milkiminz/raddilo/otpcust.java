@@ -128,7 +128,7 @@ if (!cotp.getText().toString().equals("")){
                             } else if (s.equals(getResources().getString(R.string.failed))) {
 
 
-                                Toast.makeText(otpcust.this, getResources().getString(R.string.vf), Toast.LENGTH_LONG).show();
+                                Toast.makeText(otpcust.this, getResources().getString(R.string.vf), Toast.LENGTH_LONG).show();//otp doesnot match
 
                             }
 

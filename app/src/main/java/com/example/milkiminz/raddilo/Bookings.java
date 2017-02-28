@@ -76,6 +76,7 @@ public class Bookings extends AppCompatActivity
                     oth=new String[l];
                     for (int i=0;i<l;i++){
                         JSONObject jsonObject=jsonArray.getJSONObject(i);
+                        //fetching data from databse
                         nm[i]=jsonObject.getString("sname");
                         address[i]=jsonObject.getString("sadd");
                         mail[i]=jsonObject.getString("semail");
@@ -88,6 +89,7 @@ public class Bookings extends AppCompatActivity
                         oth[i]=jsonObject.getString("bother");
                     }
                     MyOrder rc=new MyOrder(Bookings.this,nm,mail,ph,address,qty,ppr,gls,mel,oth,pls);
+                    //setting list view
                     ml.setAdapter(rc);
                 }catch (Exception e){
 
@@ -95,7 +97,7 @@ public class Bookings extends AppCompatActivity
 
             }
         }, new Response.ErrorListener() {
-            @Override
+               @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(Bookings.this,error.toString(),Toast.LENGTH_SHORT).show();
             }
@@ -186,6 +188,7 @@ public class Bookings extends AppCompatActivity
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
+    //navigation
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.

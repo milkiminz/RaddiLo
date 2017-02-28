@@ -43,7 +43,7 @@ public class Feedback extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 if (response.equals(getResources().getString(R.string.success))) {
-                    Toast.makeText(Feedback.this, getResources().getString(R.string.successfully_send), Toast.LENGTH_LONG).show();
+                    Toast.makeText(Feedback.this, getResources().getString(R.string.successfully_send), Toast.LENGTH_LONG).show();//received feedback
                 }
             }
         }, new Response.ErrorListener() {
@@ -64,8 +64,7 @@ public class Feedback extends AppCompatActivity {
                 return params;
             }
         };
-
-
+            // for blanck feedback
         requestQueue.add(stringRequest);
         }else {
             Toast.makeText(this, getResources().getString(R.string.enter_query), Toast.LENGTH_SHORT).show();

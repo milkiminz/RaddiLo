@@ -85,7 +85,7 @@ public class ProfileShop extends AppCompatActivity
                     JSONArray ar=response.getJSONArray("shopdetail");
 
                     JSONObject ob1=ar.getJSONObject(0);
-
+                    //setting vlaues
                     nm.setText(ob1.getString("sname"));
                     add.setText(ob1.getString("sadd"));
                     ph.setText(ob1.getString("sph"));

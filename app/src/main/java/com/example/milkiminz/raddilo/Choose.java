@@ -15,9 +15,9 @@ public class Choose extends AppCompatActivity {
 
     }
     public void recycler(View view){
-        startActivity(new Intent(Choose.this,RegistrationShop.class));
+        startActivity(new Intent(Choose.this,RegistrationShop.class));//for recycler
     }
     public void  customer(View view){
-        startActivity(new Intent(Choose.this,RegistrationCust.class));
+        startActivity(new Intent(Choose.this,RegistrationCust.class));//for cutomer
     }
 }
