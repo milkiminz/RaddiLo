@@ -16,8 +16,8 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
+    <string name="permission_rationale">Contacts permissions are needed for providing email
+        completions.
     </string>
     <string name="title_activity_loginshop">LogIn</string>
     <string name="title_activity_home_shop">HomeShop</string>
@@ -73,13 +73,13 @@
     <string name="glass">Glass:</string>
     <string name="others">Others:</string>
     <string name="raddilo">Raddi Lo</string>
-    <string name="quote">Recycle at it's best !</string>
+    <string name="quote">Recycle at best </string>
     <string name="shopname">Shop Name:</string>
     <string name="shopemail">Shop Email:</string>
     <string name="shopphone">Shop Phone:</string>
     <string name="shopadd">Shop Address:</string>
     <string name="update">Update</string>
-    <string name="todayorder">Today's Order</string>
+    <string name="todayorder">Todays Order</string>
     <string name="selectshop">Select Shop</string>
     <string name="aw">Approx weight</string>
     <string name="sellnow">Sell Now</string>

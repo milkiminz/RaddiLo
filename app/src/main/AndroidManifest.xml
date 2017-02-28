@@ -65,7 +65,23 @@
             android:name=".Bookings"
             android:label="@string/title_activity_bookings"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <receiver
+            android:name=".SimpleWidgetProvider"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
 
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/simple_widget_info" />
+        </receiver>
+
+        <provider
+            android:authorities="package com.example.milkiminz.raddilo.ContentProvider"
+            android:name=".ContentProvider">
+
+        </provider>
         <receiver
             android:name="com.google.android.gms.analytics.AnalyticsReceiver"
             android:enabled="true">

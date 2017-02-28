@@ -119,7 +119,8 @@ public class RegistrationCust extends AppCompatActivity {
 
                             if (s.equals(getResources().getString(R.string.success))) {
 
-
+                                ContentProvider cp=new ContentProvider(RegistrationCust.this);
+                                cp.insertData(nm,ph,em);
                                 Toast.makeText(RegistrationCust.this, getResources().getString(R.string.success)+" Registered", Toast.LENGTH_LONG).show();
                                 finish();
                             } else if (s.equals(getResources().getString(R.string.failed))) {
