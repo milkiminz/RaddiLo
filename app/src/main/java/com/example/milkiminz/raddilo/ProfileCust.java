@@ -174,6 +174,11 @@ public class ProfileCust extends AppCompatActivity
             startActivity(new Intent(ProfileCust.this,Feedback.class));
             return true;
         }
+        else if (id==R.id.action_aboutdevelopers){
+            startActivity(new Intent(this,AboutDevelopers.class));
+            
+
+        }
         else if (id==R.id.action_logout){
             File dir = getFilesDir();
             File file = new File(dir, "email.txt");
@@ -183,9 +188,7 @@ public class ProfileCust extends AppCompatActivity
             finish();
 
         }
-        else if (id==R.id.action_aboutdevelopers){
-            startActivity(new Intent(ProfileCust.this,AboutDevelopers.class));
-        }
+
 
 
         return super.onOptionsItemSelected(item);

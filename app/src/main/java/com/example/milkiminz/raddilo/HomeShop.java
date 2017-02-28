@@ -174,7 +174,12 @@ public class HomeShop extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_feeback) {
             startActivity(new Intent(HomeShop.this,Feedback.class));
-            return true;
+
+        }
+        else if (id==R.id.action_aboutdevelopers){
+            startActivity(new Intent(this,AboutDevelopers.class));
+
+
         }
         else if (id==R.id.action_logout){
             File dir = getFilesDir();

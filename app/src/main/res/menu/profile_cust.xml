@@ -8,9 +8,9 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/action_aboutdevelopers"
-        android:orderInCategory="10"
+
         android:title="About Developers"
-        app:showAsAction="never"/>
+        />
     <item
         android:id="@+id/action_logout"
         android:orderInCategory="10"

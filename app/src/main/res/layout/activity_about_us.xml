@@ -10,23 +10,36 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.milkiminz.raddilo.AboutUs">
 
-    <TextView
-        android:text="About Us"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
-        android:id="@+id/textView14"
-        android:textSize="36sp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:text="We believe that recycling is the best way to reduce waste.we are building an app to promote recycling. Recyclers will be collecting the to be recycled product and the seller or the customers will be selling them out when they want to.   They could easily choose the nearby recycler (collecting items for recycling)around them and sell their items for recycling.selecting the type of items they want to sell(paper,plastic,metal,glass). . "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView17"
-        android:layout_below="@+id/textView14"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="58dp"
-        android:textSize="24sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:text="About Us"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="22dp"
+                android:id="@+id/textView14"
+                android:textSize="36sp" />
+
+            <TextView
+                android:text="We believe that recycling is the best way to reduce waste.we are building an app to promote recycling. Recyclers will be collecting the to be recycled product and the seller or the customers will be selling them out when they want to.   They could easily choose the nearby recycler (collecting items for recycling)around them and sell their items for recycling.selecting the type of items they want to sell(paper,plastic,metal,glass). . "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView17"
+                android:layout_below="@+id/textView14"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="58dp"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </RelativeLayout>
