@@ -53,7 +53,7 @@ if (!cotp.getText().toString().equals("")){
 
 
     }else {
-    Toast.makeText(this, "Enter the OTP", Toast.LENGTH_SHORT).show();
+    Toast.makeText(this, getResources().getString(R.string.enterotp), Toast.LENGTH_SHORT).show();
 }
     }
 
@@ -125,10 +125,10 @@ if (!cotp.getText().toString().equals("")){
 
                                 Toast.makeText(otpcust.this, getResources().getString(R.string.success)+" Verified", Toast.LENGTH_LONG).show();
 
-                            } else if (s.equals("failed")) {
+                            } else if (s.equals(getResources().getString(R.string.failed))) {
 
 
-                                Toast.makeText(otpcust.this, "Verification Failed", Toast.LENGTH_LONG).show();
+                                Toast.makeText(otpcust.this, getResources().getString(R.string.vf), Toast.LENGTH_LONG).show();
 
                             }
 

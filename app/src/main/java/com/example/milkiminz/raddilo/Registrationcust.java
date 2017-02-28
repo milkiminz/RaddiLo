@@ -70,12 +70,12 @@ public class Registrationcust extends AppCompatActivity {
                 if (password.getText().toString().equals(confirmpassword.getText().toString())) {
                     new AttemptRegister().execute();
                 } else {
-                    Toast.makeText(Registrationcust.this, "Password did not match", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Registrationcust.this, getResources().getString(R.string.differentpassword), Toast.LENGTH_SHORT).show();
                 }
             } else
                 Toast.makeText(this, getResources().getString(R.string.slowinternet), Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(this, "Kindly fill all Fields!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.fillfields), Toast.LENGTH_SHORT).show();
         }
     }
     public boolean isNetworkAvailable() {
@@ -127,14 +127,14 @@ public class Registrationcust extends AppCompatActivity {
 
                                 Toast.makeText(Registrationcust.this, getResources().getString(R.string.success)+" Registered", Toast.LENGTH_LONG).show();
                                 finish();
-                            } else if (s.equals("failed")) {
+                            } else if (s.equals(getResources().getString(R.string.failed))) {
 
 
-                                Toast.makeText(Registrationcust.this, "Registration Failed", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Registrationcust.this, getResources().getString(R.string.rf), Toast.LENGTH_LONG).show();
 
                             }
-                            else if(s.equals("already")){
-                                Toast.makeText(Registrationcust.this, "Already Registered", Toast.LENGTH_LONG).show();
+                            else if(s.equals(getResources().getString(R.string.already))){
+                                Toast.makeText(Registrationcust.this, getResources().getString(R.string.ar), Toast.LENGTH_LONG).show();
 
                             }
 

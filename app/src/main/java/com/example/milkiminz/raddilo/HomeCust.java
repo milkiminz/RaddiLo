@@ -171,7 +171,7 @@ public class HomeCust extends AppCompatActivity
             };
             requestQueue.add(stringRequest);
         }else {
-            Toast.makeText(this, "Kindly enter the Approx weight in KG", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.enterweight), Toast.LENGTH_SHORT).show();
         }
     }
     protected String loadData() {

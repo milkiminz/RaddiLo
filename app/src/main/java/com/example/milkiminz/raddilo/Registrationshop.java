@@ -69,12 +69,12 @@ public class Registrationshop extends AppCompatActivity {
                 if (password.getText().toString().equals(confirmpassword.getText().toString())) {
                     new AttemptRegister().execute();
                 } else {
-                    Toast.makeText(Registrationshop.this, "Password did not match", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Registrationshop.this, getResources().getString(R.string.differentpassword), Toast.LENGTH_SHORT).show();
                 }
             } else
-                Toast.makeText(this, "NO INTERNET", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getResources().getString(R.string.slowinternet), Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(this, "Kindly fill all Fields!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.fillfields), Toast.LENGTH_SHORT).show();
         }
     }
     public boolean isNetworkAvailable() {
@@ -125,14 +125,14 @@ public class Registrationshop extends AppCompatActivity {
                                 Toast.makeText(Registrationshop.this, getResources().getString(R.string.success)+" Registered", Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(Registrationshop.this,otpshop.class));
                                 finish();
-                            } else if (s.equals("failed")) {
+                            } else if (s.equals(getResources().getString(R.string.failed))) {
 
 
-                                Toast.makeText(Registrationshop.this, "Registration Failed", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Registrationshop.this, getResources().getString(R.string.rf), Toast.LENGTH_LONG).show();
 
                             }
-                            else if(s.equals("already")){
-                                Toast.makeText(Registrationshop.this, "Already Registered", Toast.LENGTH_LONG).show();
+                            else if(s.equals(getResources().getString(R.string.already))){
+                                Toast.makeText(Registrationshop.this, getResources().getString(R.string.ar), Toast.LENGTH_LONG).show();
 
                             }
 

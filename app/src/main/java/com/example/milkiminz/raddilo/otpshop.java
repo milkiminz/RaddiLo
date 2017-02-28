@@ -52,7 +52,7 @@ public class otpshop extends AppCompatActivity {
             new verify().execute();
 
         }else {
-            Toast.makeText(this, "Enter OPT", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.enterotp), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -124,10 +124,10 @@ public class otpshop extends AppCompatActivity {
 
                                 Toast.makeText(otpshop.this,getResources().getString(R.string.success)+" Verified", Toast.LENGTH_LONG).show();
 
-                            } else if (s.equals("failed")) {
+                            } else if (s.equals(getResources().getString(R.string.failed))) {
 
 
-                                Toast.makeText(otpshop.this, "Verification Failed", Toast.LENGTH_LONG).show();
+                                Toast.makeText(otpshop.this, getResources().getString(R.string.vf), Toast.LENGTH_LONG).show();
 
                             }
 

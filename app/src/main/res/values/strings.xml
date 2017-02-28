@@ -51,4 +51,14 @@
     <string name="registershop">http://139.59.47.63/registershop.php</string>
     <string name="updatecust">http://139.59.47.63/updatecustdetails.php</string>
     <string name="updateshop">http://139.59.47.63/updateshopdetails.php</string>
+    <string name="differentpassword">"Password did not match"</string>
+    <string name="fillfields">Kindly fill all Fields!!</string>
+    <string name="ar">Already Registered</string>
+    <string name="rf">"Registration Failed"</string>
+    <string name="failed">failed</string>
+    <string name="already">already</string>
+    <string name="enterotp">Enter OPT</string>
+    <string name="vf">Verification Failed</string>
+    <string name="enterweight">Kindly enter the Approx weight in KG</string>
+
 </resources>

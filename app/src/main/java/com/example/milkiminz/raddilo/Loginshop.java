@@ -137,10 +137,10 @@ public class Loginshop extends AppCompatActivity  {
                                 Toast.makeText(Loginshop.this, getResources().getString(R.string.success), Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(Loginshop.this,HomeShop.class));
                                 finish();
-                            } else if (s.equals("failed")) {
+                            } else if (s.equals(getResources().getString(R.string.failed))) {
 
 
-                                Toast.makeText(Loginshop.this, " Failed", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Loginshop.this, getResources().getString(R.string.failed), Toast.LENGTH_LONG).show();
 
                             } else {
                                 Toast.makeText(Loginshop.this, getResources().getString(R.string.slowinternet), Toast.LENGTH_LONG).show();
