@@ -119,7 +119,7 @@ public class RegistrationShop extends AppCompatActivity {
 
 
                                 Toast.makeText(RegistrationShop.this, getResources().getString(R.string.success)+" Registered", Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(RegistrationShop.this,otpshop.class));
+                                startActivity(new Intent(RegistrationShop.this,OtpShop.class));
                                 finish();
                             } else if (s.equals(getResources().getString(R.string.failed))) {
 

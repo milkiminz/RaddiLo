@@ -1,7 +1,6 @@
 package com.example.milkiminz.raddilo;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -18,16 +17,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Hashtable;
 import java.util.Map;
 
-public class otpshop extends AppCompatActivity {
+public class OtpShop extends AppCompatActivity {
 
     String Url;
     ProgressDialog pDialog;
@@ -43,6 +36,7 @@ public class otpshop extends AppCompatActivity {
         setContentView(R.layout.activity_otpshop);
         sotp=(EditText) findViewById(R.id.sotp);
         Url = getResources().getString(R.string.verifyshop);
+        Toast.makeText(this, getResources().getString(R.string.otpver), Toast.LENGTH_SHORT).show();
     }
 
 
@@ -80,7 +74,7 @@ public class otpshop extends AppCompatActivity {
         protected void onPreExecute()
         {
             super.onPreExecute();
-            pDialog = new ProgressDialog(otpshop.this);
+            pDialog = new ProgressDialog(OtpShop.this);
             pDialog.setMessage("Checking...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -102,12 +96,12 @@ public class otpshop extends AppCompatActivity {
                             if (s.equals(getResources().getString(R.string.success))) {
 
 
-                                Toast.makeText(otpshop.this,getResources().getString(R.string.success)+" Verified", Toast.LENGTH_LONG).show();
+                                Toast.makeText(OtpShop.this,getResources().getString(R.string.success)+" Verified", Toast.LENGTH_LONG).show();
 
                             } else if (s.equals(getResources().getString(R.string.failed))) {
 
 
-                                Toast.makeText(otpshop.this, getResources().getString(R.string.vf), Toast.LENGTH_LONG).show();//otp does not match
+                                Toast.makeText(OtpShop.this, getResources().getString(R.string.vf), Toast.LENGTH_LONG).show();//otp does not match
 
                             }
 
@@ -121,7 +115,7 @@ public class otpshop extends AppCompatActivity {
                     pDialog.dismiss();
 
 
-                    Toast.makeText(otpshop.this, volleyError.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(OtpShop.this, volleyError.getMessage(), Toast.LENGTH_LONG).show();
 
 
                     //get response body and parse with appropriate encoding
@@ -147,7 +141,7 @@ public class otpshop extends AppCompatActivity {
 
 
             //Creating a Request Queue
-            requestQueue = Volley.newRequestQueue(otpshop.this);
+            requestQueue = Volley.newRequestQueue(OtpShop.this);
 
             //Adding request to the queue
             requestQueue.add(stringRequest);

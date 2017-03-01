@@ -36,6 +36,7 @@ public class OtpCust extends AppCompatActivity {
         setContentView(R.layout.activity_otpcust);
         cotp=(EditText) findViewById(R.id.cotp);
         Url = getResources().getString(R.string.verifycust);
+        Toast.makeText(this, getResources().getString(R.string.otpver), Toast.LENGTH_SHORT).show();
     }
 
 
