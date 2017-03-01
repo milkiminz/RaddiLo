@@ -2,6 +2,7 @@ package com.example.milkiminz.raddilo;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
@@ -118,25 +119,13 @@ public class ProfileShop extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
-    protected String loadData() {
-        String FILENAME = "email.txt";
-        String out="";
-        try {
-            out="";
-            FileInputStream fis1 = getApplication().openFileInput(FILENAME);
-            BufferedReader br1 = new BufferedReader(new InputStreamReader(fis1));
-            String sLine1 = null;
 
-            while (((sLine1 = br1.readLine()) != null)) {
-                out += sLine1;
-            }
-        }catch (FileNotFoundException e){
-            e.printStackTrace();
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-        return out;
+    protected String loadData() {
+
+        DBHelper db=new DBHelper(getApplicationContext());
+        Cursor c=db.getData();
+        c.moveToFirst();
+        return c.getString(1);
     }
 
     @Override

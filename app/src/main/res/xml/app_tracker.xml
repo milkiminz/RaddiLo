@@ -10,7 +10,7 @@
     <string name="ga_trackingId">UA-92696285-1</string>
 
     <string name="ga_sampleFrequency">100.0</string>
-
+    <screenName name="com.example.milkiminz.raddilo.Choose">ChooseScreen</screenName>
     <bool name="ga_reportUncaughtExceptions">true</bool>
 
     <!--

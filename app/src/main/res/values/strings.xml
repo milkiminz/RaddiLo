@@ -102,4 +102,12 @@
     <string name="milki">Name:  Milki Minz</string>
     <string name="mymail">Email: wwwmilki.minz096@gmail.com</string>
     <string name="abtdev">About Developer</string>
+
+
+
+    <string name="msg_welcome">Welcome to Admob. Click on the below button to launch the Interstitial ad.</string>
+    <string name="btn_fullscreen_ad">Show Fullscreen Ad</string>
+
+    <!-- AdMob ad unit IDs -->
+    <string name="banner_home_footer">ca-app-pub-6129156869323654</string>
 </resources>
