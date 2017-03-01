@@ -2,6 +2,7 @@ package com.example.milkiminz.raddilo;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -124,24 +125,11 @@ public class Bookings extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
     protected String loadData() {
-        String FILENAME = "email.txt";
-        String out="";
-        try {
-            out="";
-            FileInputStream fis1 = getApplication().openFileInput(FILENAME);
-            BufferedReader br1 = new BufferedReader(new InputStreamReader(fis1));
-            String sLine1 = null;
 
-            while (((sLine1 = br1.readLine()) != null)) {
-                out += sLine1;
-            }
-        }catch (FileNotFoundException e){
-            e.printStackTrace();
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-        return out;
+        DBHelper db=new DBHelper(getApplicationContext());
+        Cursor c=db.getData();
+        c.moveToFirst();
+        return c.getString(1);
     }
     @Override
     public void onBackPressed() {

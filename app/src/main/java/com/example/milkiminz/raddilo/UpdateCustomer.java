@@ -47,7 +47,7 @@ public class UpdateCustomer extends AppCompatActivity {
             public void onResponse(String response) {
                 if(response.equals(getResources().getString(R.string.success))) {
                     Toast.makeText(UpdateCustomer.this, getResources().getString(R.string.success)+": updated", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(UpdateCustomer.this,ProfileShop.class));
+                    startActivity(new Intent(UpdateCustomer.this,ProfileCust.class));
                     finish();
                 }
             }

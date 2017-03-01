@@ -29,7 +29,6 @@
     <string name="title_activity_bookings">Bookings</string>
 
 
-
     <string name="booking_url">http://139.59.47.63/fetchmyorders.php</string>
     <string name="feedback_url">http://139.59.47.63/feedback.php</string>
     <string name="success">success</string>
@@ -104,10 +103,20 @@
     <string name="abtdev">About Developer</string>
 
 
-
     <string name="msg_welcome">Welcome to Admob. Click on the below button to launch the Interstitial ad.</string>
     <string name="btn_fullscreen_ad">Show Fullscreen Ad</string>
 
     <!-- AdMob ad unit IDs -->
     <string name="banner_home_footer">ca-app-pub-6129156869323654</string>
+    <string name="fetchfeatures">http://kgbvbundu.org/capstone/fetchfeatures.php</string>
+    <string name="upcomingfeatures">Upcoming Features !</string>
+    <string name="arrow">-></string>
+
+    <string name="cdad">About Developers Activity</string>
+    <string name="uf">Upcoming Features</string>
+    <string name="item">TextView</string>
+    <string name="choose">Choose-Role</string>
+    <string name="ufa">Upcoming Features</string>
+    <string name="abt">About Me!</string>
+    <string name="login">Login</string>
 </resources>

@@ -27,7 +27,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="61dp"
         android:id="@+id/button2"
-        android:onClick="sendfeedback" />
+        android:onClick="sendFeedback" />
 
     <EditText
         android:layout_width="wrap_content"

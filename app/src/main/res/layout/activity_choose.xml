@@ -25,7 +25,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textColorHighlight="@android:color/background_dark"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/colorPrimary"
         android:textColorHint="@android:color/background_dark"
         android:textColorLink="@android:color/background_dark" />
 
@@ -44,7 +44,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="93dp"
-        android:onClick="customer" />
+        android:onClick="Customer" />
 
     <Button
         android:text="@string/recycler"
@@ -59,7 +59,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="30dp"
-        android:onClick="recycler" />
+        android:onClick="Recycler" />
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"

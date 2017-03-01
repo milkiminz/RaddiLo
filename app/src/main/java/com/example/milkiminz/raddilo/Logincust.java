@@ -170,13 +170,6 @@ public class LoginCust extends AppCompatActivity  {
         DBHelper db=new DBHelper(getApplicationContext());
         db.insertContact(email);
     }
-    protected String loadData() {
-
-        DBHelper db=new DBHelper(getApplicationContext());
-        Cursor c=db.getData();
-        c.moveToFirst();
-        return c.getString(1);
-    }
 
 
     public boolean isNetworkAvailable() {

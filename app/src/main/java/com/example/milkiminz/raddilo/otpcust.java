@@ -1,7 +1,6 @@
 package com.example.milkiminz.raddilo;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -18,16 +17,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Hashtable;
 import java.util.Map;
 
-public class otpcust extends AppCompatActivity {
+public class OtpCust extends AppCompatActivity {
 
     String Url;
     ProgressDialog pDialog;
@@ -80,7 +73,7 @@ if (!cotp.getText().toString().equals("")){
         protected void onPreExecute()
         {
             super.onPreExecute();
-            pDialog = new ProgressDialog(otpcust.this);
+            pDialog = new ProgressDialog(OtpCust.this);
             pDialog.setMessage("Checking...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -102,12 +95,12 @@ if (!cotp.getText().toString().equals("")){
                             if (s.equals(getResources().getString(R.string.success))) {
 
 
-                                Toast.makeText(otpcust.this, getResources().getString(R.string.success)+" Verified", Toast.LENGTH_LONG).show();
+                                Toast.makeText(OtpCust.this, getResources().getString(R.string.success)+" Verified", Toast.LENGTH_LONG).show();
 
                             } else if (s.equals(getResources().getString(R.string.failed))) {
 
 
-                                Toast.makeText(otpcust.this, getResources().getString(R.string.vf), Toast.LENGTH_LONG).show();//otp doesnot match
+                                Toast.makeText(OtpCust.this, getResources().getString(R.string.vf), Toast.LENGTH_LONG).show();//otp doesnot match
 
                             }
 
@@ -121,7 +114,7 @@ if (!cotp.getText().toString().equals("")){
                     pDialog.dismiss();
 
 
-                    Toast.makeText(otpcust.this, volleyError.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(OtpCust.this, volleyError.getMessage(), Toast.LENGTH_LONG).show();
 
 
                     //get response body and parse with appropriate encoding
@@ -147,7 +140,7 @@ if (!cotp.getText().toString().equals("")){
 
 
             //Creating a Request Queue
-            requestQueue = Volley.newRequestQueue(otpcust.this);
+            requestQueue = Volley.newRequestQueue(OtpCust.this);
 
             //Adding request to the queue
             requestQueue.add(stringRequest);

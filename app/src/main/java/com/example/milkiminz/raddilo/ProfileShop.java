@@ -161,9 +161,7 @@ public class ProfileShop extends AppCompatActivity
             return true;
         }
         else if (id==R.id.action_logout){
-            File dir = getFilesDir();
-            File file = new File(dir, "email.txt");
-            file.delete();
+
             Intent p=new Intent(this,LoginShop.class);
             startActivity(p);
             finish();
@@ -183,10 +181,10 @@ public class ProfileShop extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_chome) {
+        if (id == R.id.nav_shome) {
             startActivity(new Intent(ProfileShop.this,HomeShop.class));
             finish();
-        } else if (id == R.id.nav_cprofile) {
+        } else if (id == R.id.nav_sprofile) {
             startActivity(new Intent(ProfileShop.this,ProfileShop.class));
             finish();
         } else if (id == R.id.nav_aboutus) {

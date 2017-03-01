@@ -44,10 +44,10 @@ public class LoginShop extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_logincust);
+        setContentView(R.layout.activity_loginshop);
         loginUrl = getResources().getString(R.string.loginshop);
-        email = (EditText) findViewById(R.id.cemail);
-        password = (EditText) findViewById(R.id.cpassword);
+        email = (EditText) findViewById(R.id.semail);
+        password = (EditText) findViewById(R.id.spassword);
 
     }
 

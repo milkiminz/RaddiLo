@@ -12,7 +12,8 @@ import android.appwidget.AppWidgetProvider;
     import android.app.PendingIntent;
     import android.appwidget.AppWidgetManager;
     import android.appwidget.AppWidgetProvider;
-    import android.content.Context;
+import android.content.ComponentName;
+import android.content.Context;
     import android.content.Intent;
 import android.database.Cursor;
 import android.widget.RemoteViews;
@@ -24,32 +25,41 @@ import android.widget.RemoteViews;
 
 
 
-    public class SimpleWidgetProvider  extends AppWidgetProvider {
-        RemoteViews remoteViews;
+public class SimpleWidgetProvider  extends AppWidgetProvider {
+    RemoteViews remoteViews;
 
 
-        String Name,Phone,Email;
-        @Override
-        public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-            final int count = appWidgetIds.length;
-
-            for (int i = 0; i < count; i++) {
-                int widgetId = appWidgetIds[i];
-
-                remoteViews = new RemoteViews(context.getPackageName(),
-                        R.layout.simple_widget);
+    @Override
+    public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
 
 
-                Intent intent = new Intent(context, SimpleWidgetProvider.class);
-                intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
-                intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
-
-                appWidgetManager.updateAppWidget(widgetId, remoteViews);
+        remoteViews = new RemoteViews(context.getPackageName(),
+                R.layout.simple_widget);
 
 
-            }
-        }
-
+        remoteViews.setOnClickPendingIntent(R.id.aboutdev,
+                actionPendingIntent(context));
+        remoteViews.setOnClickPendingIntent(R.id.ufeatures,
+                actionPendingIntent1(context));
+        pushWidgetUpdate(context, remoteViews);
 
     }
+    public static PendingIntent actionPendingIntent(Context context) {
+        Intent intent = new Intent(context,AboutDevelopers.class);
+        intent.setAction("LAUNCH_ACTIVITY");
+        return PendingIntent.getActivity(context, 0, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+    }
+    public static PendingIntent actionPendingIntent1(Context context) {
+        Intent intent = new Intent(context,UpcomingFeatures.class);
+        intent.setAction("LAUNCH_ACTIVITY");
+        return PendingIntent.getActivity(context, 0, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+    }
+    public static void pushWidgetUpdate(Context context, RemoteViews remoteViews) {
+        ComponentName myWidget = new ComponentName(context,SimpleWidgetProvider.class);
+        AppWidgetManager manager = AppWidgetManager.getInstance(context);
+        manager.updateAppWidget(myWidget, remoteViews);
+    }
 
+}

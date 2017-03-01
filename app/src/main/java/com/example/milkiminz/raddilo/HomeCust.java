@@ -3,6 +3,7 @@ package com.example.milkiminz.raddilo;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -100,7 +101,7 @@ public class HomeCust extends AppCompatActivity
         return true;
     }
 
-    public void sellnow(View view){
+    public void sellNow(View view){
         if(!aw.getText().toString().equals("")) { //checking the values
             if (s1.isChecked()) {
                 s1string = "yes";
@@ -171,26 +172,12 @@ public class HomeCust extends AppCompatActivity
         }
     }
     protected String loadData() {
-        String FILENAME = "email.txt";
-        String out="";
-        try {
-            out="";
-            FileInputStream fis1 = getApplication().openFileInput(FILENAME);
-            BufferedReader br1 = new BufferedReader(new InputStreamReader(fis1));
-            String sLine1 = null;
 
-            while (((sLine1 = br1.readLine()) != null)) {
-                out += sLine1;
-            }
-        }catch (FileNotFoundException e){
-            e.printStackTrace();
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-        return out;
+        DBHelper db=new DBHelper(getApplicationContext());
+        Cursor c=db.getData();
+        c.moveToFirst();
+        return c.getString(1);
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -204,9 +191,7 @@ public class HomeCust extends AppCompatActivity
             return true;
         }
         else if (id==R.id.action_logout){
-            File dir = getFilesDir();
-            File file = new File(dir, "email.txt");
-            file.delete();
+
             Intent p=new Intent(this,LoginCust.class);
             startActivity(p);
             finish();

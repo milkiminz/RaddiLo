@@ -21,25 +21,38 @@
             android:orientation="vertical" >
 
             <TextView
+                android:text="http://milkiminz.com"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView26"
+                android:textSize="18sp"
+                android:layout_marginTop="34dp"
+                android:layout_centerHorizontal="true"
+                android:autoLink="web" />
+
+            <TextView
                 android:text="@string/github"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="34dp"
                 android:id="@+id/textView24"
-                android:textSize="30sp"
+                android:textSize="18sp"
                 android:layout_below="@+id/textView22"
                 android:layout_alignLeft="@+id/textView22"
-                android:layout_alignStart="@+id/textView22" />
+                android:layout_alignStart="@+id/textView22"
+                android:layout_centerHorizontal="true"
+                android:autoLink="web" />
 
             <TextView
                 android:text="@string/mymail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView22"
-                android:textSize="30sp"
+                android:textSize="18sp"
                 android:layout_marginTop="35dp"
                 android:layout_below="@+id/imageView2"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:autoLink="email" />
 
             <TextView
                 android:text="@string/milki"
@@ -52,7 +65,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="25dp"
                 android:id="@+id/textView20"
-                android:textSize="36sp" />
+                android:textSize="24sp" />
 
             <ImageView
                 app:srcCompat="@drawable/milki"

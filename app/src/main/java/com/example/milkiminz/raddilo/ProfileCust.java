@@ -165,9 +165,6 @@ public class ProfileCust extends AppCompatActivity
 
         }
         else if (id==R.id.action_logout){
-            File dir = getFilesDir();
-            File file = new File(dir, "email.txt");
-            file.delete();
             Intent p=new Intent(this,LoginCust.class);
             startActivity(p);
             finish();

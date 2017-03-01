@@ -1,5 +1,6 @@
 package com.example.milkiminz.raddilo;
 
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -34,7 +35,7 @@ public class Feedback extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
         gfb=(EditText) findViewById(R.id.feedback);
     }
-    public void sendfeedback(View view) {
+    public void sendFeedback(View view) {
         fb = gfb.getText().toString();
         if (!fb.equals("")){
 
@@ -72,24 +73,12 @@ public class Feedback extends AppCompatActivity {
     }
 
     protected String loadData() {
-        String FILENAME = "email.txt";
-        String out="";
-        try {
-            out="";
-            FileInputStream fis1 = getApplication().openFileInput(FILENAME);
-            BufferedReader br1 = new BufferedReader(new InputStreamReader(fis1));
-            String sLine1 = null;
 
-            while (((sLine1 = br1.readLine()) != null)) {
-                out += sLine1;
-            }
-        }catch (FileNotFoundException e){
-            e.printStackTrace();
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-        return out;
+        DBHelper db=new DBHelper(getApplicationContext());
+        Cursor c=db.getData();
+        c.moveToFirst();
+        return c.getString(1);
     }
+
 }
 

@@ -9,13 +9,17 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.milkiminz.raddilo.HomeCust"
     tools:showIn="@layout/app_bar_home_cust">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -118,7 +122,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="49dp"
                 android:id="@+id/sellnow"
-                android:onClick="sellnow" />
+                android:onClick="sellNow" />
 
             <EditText
                 android:layout_width="wrap_content"
