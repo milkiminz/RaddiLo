@@ -5,7 +5,7 @@
     android:id="@+id/content_updateshop"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@drawable/update"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.milkiminz.raddilo.UpdateShop"
     tools:showIn="@layout/activity_updateshop">
@@ -16,7 +16,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="21dp"
-        android:id="@+id/textView5" />
+        android:id="@+id/textView5"
+        android:textColor="@android:color/background_light" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -27,7 +28,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"
         android:id="@+id/name"
-        android:hint="@string/name" />
+        android:hint="@string/name"
+        android:background="@android:color/background_light"
+        android:alpha="0.6" />
 
     <TextView
         android:text="@string/phone"
@@ -36,7 +39,8 @@
         android:layout_below="@+id/name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="28dp"
-        android:id="@+id/textView6" />
+        android:id="@+id/textView6"
+        android:textColor="@android:color/background_light" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -48,7 +52,9 @@
         android:layout_alignStart="@+id/name"
         android:layout_marginTop="27dp"
         android:id="@+id/phone"
-        android:hint="@string/phone" />
+        android:hint="@string/phone"
+        android:alpha="0.6"
+        android:background="@android:color/background_light" />
 
     <TextView
         android:text="@string/address"
@@ -57,7 +63,8 @@
         android:layout_below="@+id/phone"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
-        android:id="@+id/textView8" />
+        android:id="@+id/textView8"
+        android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -69,7 +76,9 @@
         android:layout_alignStart="@+id/phone"
         android:layout_marginTop="31dp"
         android:id="@+id/address"
-        android:hint="@string/address" />
+        android:hint="@string/address"
+        android:background="@android:color/background_light"
+        android:alpha="0.6" />
 
     <Button
         android:text="@string/update"
@@ -80,5 +89,4 @@
         android:layout_marginTop="34dp"
         android:id="@+id/button3"
         android:onClick="update1" />
-
 </RelativeLayout>

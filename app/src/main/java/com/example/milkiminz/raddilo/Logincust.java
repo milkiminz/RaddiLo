@@ -3,6 +3,7 @@ package com.example.milkiminz.raddilo;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
@@ -165,40 +166,19 @@ public class LoginCust extends AppCompatActivity  {
 
         }
     }
-    protected String loadData() {
-        String FILENAME = "email.txt";
-        String out="";
-        try {
-            out="";
-            FileInputStream fis1 = getApplication().openFileInput(FILENAME);
-            BufferedReader br1 = new BufferedReader(new InputStreamReader(fis1));
-            String sLine1 = null;
 
-            while (((sLine1 = br1.readLine()) != null)) {
-                out += sLine1;
-            }
-        }catch (FileNotFoundException e){
-            e.printStackTrace();
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-        return out;
+    protected void saveData2(String email){
+
+
+        DBHelper db=new DBHelper(getApplicationContext());
+        db.insertContact(email);
     }
-    protected void saveData2(String em){
-        String FILENAME1 = "email.txt";
-        String verifyme=em;
+    protected String loadData() {
 
-        try {
-            FileOutputStream fos1 = getApplication().openFileOutput(FILENAME1, Context.MODE_PRIVATE);
-            fos1.write(verifyme.getBytes());
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        DBHelper db=new DBHelper(getApplicationContext());
+        Cursor c=db.getData();
+        c.moveToFirst();
+        return c.getString(1);
     }
 
 

@@ -117,8 +117,7 @@ public class RegistrationShop extends AppCompatActivity {
 
                             if (s.equals(getResources().getString(R.string.success))) {
 
-                                ContentProvider cp=new ContentProvider(RegistrationShop.this);
-                                cp.insertData(nm,ph,em);
+
                                 Toast.makeText(RegistrationShop.this, getResources().getString(R.string.success)+" Registered", Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(RegistrationShop.this,otpshop.class));
                                 finish();
