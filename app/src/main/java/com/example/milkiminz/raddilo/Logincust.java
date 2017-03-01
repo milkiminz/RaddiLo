@@ -48,10 +48,7 @@ public class LoginCust extends AppCompatActivity  {
        email = (EditText) findViewById(R.id.cemail);
        password = (EditText) findViewById(R.id.cpassword);
         loginUrl = getResources().getString(R.string.logincust);
-        if(!loadData().equals("")){
-            startActivity(new Intent(LoginCust.this,HomeCust.class));
-            finish();
-        }
+
 
 
     }

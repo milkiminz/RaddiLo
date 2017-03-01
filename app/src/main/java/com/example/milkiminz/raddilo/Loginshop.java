@@ -48,10 +48,6 @@ public class LoginShop extends AppCompatActivity  {
         loginUrl = getResources().getString(R.string.loginshop);
         email = (EditText) findViewById(R.id.cemail);
         password = (EditText) findViewById(R.id.cpassword);
-        if(!loadData().equals("")){
-            startActivity(new Intent(LoginShop.this,HomeShop.class));
-            finish();
-        }
 
     }
 
