@@ -3,10 +3,10 @@ package com.example.milkiminz.raddilo;
 import android.annotation.SuppressLint;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -23,16 +23,17 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UpcomingFeatures extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String>{
-    TextView txt,txt2,txt3;
+public class UpcomingFeatures extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String> {
+    TextView txt, txt2, txt3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upcoming_features);
-        txt=(TextView) findViewById(R.id.uf1);
-        txt2=(TextView) findViewById(R.id.uf2);
-        txt3=(TextView) findViewById(R.id.uf3) ;
-        getSupportLoaderManager().initLoader(0,null, this);
+        txt = (TextView) findViewById(R.id.uf1);
+        txt2 = (TextView) findViewById(R.id.uf2);
+        txt3 = (TextView) findViewById(R.id.uf3);
+        getSupportLoaderManager().initLoader(0, null, this);
     }
 
     @Override
@@ -47,30 +48,31 @@ public class UpcomingFeatures extends AppCompatActivity implements LoaderManager
 
     @Override
     public Loader<String> onCreateLoader(int id, Bundle args) {
-        FetchData fb=new FetchData(UpcomingFeatures.this,txt,txt2,txt3);
+        FetchData fb = new FetchData(UpcomingFeatures.this, txt, txt2, txt3);
         fb.forceLoad();
         return null;
     }
 
 
     private static class FetchData extends AsyncTaskLoader<String> {
-        String check=null;
+        String check = null;
         RequestQueue requestQueue;
-        TextView txt1,txttwo,txtthree;
+        TextView txt1, txttwo, txtthree;
+
         public FetchData(Context context, TextView txt, TextView txt2, TextView txt3) {
             super(context);
             requestQueue = Volley.newRequestQueue(context);
-            this.txt1=txt;
-            this.txttwo=txt2;
-            this.txtthree=txt3;
+            this.txt1 = txt;
+            this.txttwo = txt2;
+            this.txtthree = txt3;
         }
 
         @Override
         public String loadInBackground() {
-            JSONObject params=new JSONObject();
+            JSONObject params = new JSONObject();
             String load_url = getContext().getResources().getString(R.string.fetchfeatures);
 
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url, params, new Response.Listener<JSONObject>() {
                 @SuppressLint("SetTextI18n")
                 @Override
                 public void onResponse(JSONObject response) {
@@ -82,7 +84,7 @@ public class UpcomingFeatures extends AppCompatActivity implements LoaderManager
                         txttwo.setText(a.getString("feature2"));
                         txtthree.setText(a.getString("feature3"));
 
-                    }catch (Exception e){
+                    } catch (Exception e) {
 
                     }
                 }

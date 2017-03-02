@@ -27,80 +27,76 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Bookings extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     RequestQueue requestQueue;
-    String[] nm,address,mail,ph,qty,ppr,pls,mel,gls,oth;
+    String[] nm, address, mail, ph, qty, ppr, pls, mel, gls, oth;
     ListView ml;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bookings);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ml=(ListView)findViewById(R.id.myorders);
+        ml = (ListView) findViewById(R.id.myorders);
 
-        requestQueue= Volley.newRequestQueue(Bookings.this);
+        requestQueue = Volley.newRequestQueue(Bookings.this);
         JSONObject params = new JSONObject();
-        try{
-            params.put("email",loadData());
+        try {
+            params.put("email", loadData());
 
-        }catch (JSONException e){
+        } catch (JSONException e) {
 
         }
         String load_url = getResources().getString(R.string.booking_url);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url, params, new Response.Listener<JSONObject>() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(JSONObject response) {
-                try{
-                    JSONArray jsonArray=response.getJSONArray("myorders");
-                    int l=jsonArray.length();
-                    nm=new String[l];
-                    address=new String[l];
-                    mail=new String[l];
-                    ph=new String[l];
-                    qty=new String[l];
-                    ppr=new String[l];
-                    pls=new String[l];
-                    gls=new String[l];
-                    mel=new String[l];
-                    oth=new String[l];
-                    for (int i=0;i<l;i++){
-                        JSONObject jsonObject=jsonArray.getJSONObject(i);
+                try {
+                    JSONArray jsonArray = response.getJSONArray("myorders");
+                    int l = jsonArray.length();
+                    nm = new String[l];
+                    address = new String[l];
+                    mail = new String[l];
+                    ph = new String[l];
+                    qty = new String[l];
+                    ppr = new String[l];
+                    pls = new String[l];
+                    gls = new String[l];
+                    mel = new String[l];
+                    oth = new String[l];
+                    for (int i = 0; i < l; i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
                         //fetching data from databse
-                        nm[i]=jsonObject.getString("sname");
-                        address[i]=jsonObject.getString("sadd");
-                        mail[i]=jsonObject.getString("semail");
-                        ph[i]=jsonObject.getString("sph");
-                        qty[i]=jsonObject.getString("bweight");
-                        ppr[i]=jsonObject.getString("bpaper");
-                        pls[i]=jsonObject.getString("bplastic");
-                        gls[i]=jsonObject.getString("bglass");
-                        mel[i]=jsonObject.getString("bmetal");
-                        oth[i]=jsonObject.getString("bother");
+                        nm[i] = jsonObject.getString("sname");
+                        address[i] = jsonObject.getString("sadd");
+                        mail[i] = jsonObject.getString("semail");
+                        ph[i] = jsonObject.getString("sph");
+                        qty[i] = jsonObject.getString("bweight");
+                        ppr[i] = jsonObject.getString("bpaper");
+                        pls[i] = jsonObject.getString("bplastic");
+                        gls[i] = jsonObject.getString("bglass");
+                        mel[i] = jsonObject.getString("bmetal");
+                        oth[i] = jsonObject.getString("bother");
                     }
-                    MyOrder rc=new MyOrder(Bookings.this,nm,mail,ph,address,qty,ppr,gls,mel,oth,pls);
+                    MyOrder rc = new MyOrder(Bookings.this, nm, mail, ph, address, qty, ppr, gls, mel, oth, pls);
                     //setting list view
                     ml.setAdapter(rc);
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
 
             }
         }, new Response.ErrorListener() {
-               @Override
+            @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(Bookings.this,error.toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(Bookings.this, error.toString(), Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -113,8 +109,6 @@ public class Bookings extends AppCompatActivity
         requestQueue.add(jsonObjectRequest);
 
 
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -124,13 +118,15 @@ public class Bookings extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
     protected String loadData() {
 
-        DBHelper db=new DBHelper(getApplicationContext());
-        Cursor c=db.getData();
+        DBHelper db = new DBHelper(getApplicationContext());
+        Cursor c = db.getData();
         c.moveToFirst();
         return c.getString(1);
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -157,20 +153,18 @@ public class Bookings extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_feeback) {
-            startActivity(new Intent(Bookings.this,Feedback.class));
+            startActivity(new Intent(Bookings.this, Feedback.class));
             return true;
-        }
-        else if (id==R.id.action_logout){
+        } else if (id == R.id.action_logout) {
             File dir = getFilesDir();
             File file = new File(dir, "email.txt");
             file.delete();
-            Intent p=new Intent(this,LoginCust.class);
+            Intent p = new Intent(this, LoginCust.class);
             startActivity(p);
             finish();
 
-        }
-        else if (id==R.id.action_aboutdevelopers){
-            startActivity(new Intent(Bookings.this,AboutDevelopers.class));
+        } else if (id == R.id.action_aboutdevelopers) {
+            startActivity(new Intent(Bookings.this, AboutDevelopers.class));
         }
         return super.onOptionsItemSelected(item);
     }
@@ -183,20 +177,19 @@ public class Bookings extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_chome) {
-            startActivity(new Intent(Bookings.this,HomeCust.class));
+            startActivity(new Intent(Bookings.this, HomeCust.class));
             finish();
 
         } else if (id == R.id.nav_cprofile) {
-            startActivity(new Intent(Bookings.this,ProfileCust.class));
+            startActivity(new Intent(Bookings.this, ProfileCust.class));
             finish();
 
-        }else if(id==R.id.nav_cbook){
-            startActivity(new Intent(Bookings.this,Bookings.class));
+        } else if (id == R.id.nav_cbook) {
+            startActivity(new Intent(Bookings.this, Bookings.class));
             finish();
 
-        }
-        else if (id == R.id.nav_aboutus) {
-            startActivity(new Intent(Bookings.this,AboutUs.class));
+        } else if (id == R.id.nav_aboutus) {
+            startActivity(new Intent(Bookings.this, AboutUs.class));
 
         }
 

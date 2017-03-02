@@ -27,71 +27,66 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
 public class HomeShop extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-        ListView orderlist;
+    ListView orderlist;
     RequestQueue requestQueue;
-    String[] nm,address,mail,ph,qty,ppr,pls,mel,gls,oth;
+    String[] nm, address, mail, ph, qty, ppr, pls, mel, gls, oth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_shop);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        orderlist=(ListView)findViewById(R.id.orderlist);
-        requestQueue= Volley.newRequestQueue(HomeShop.this);
+        orderlist = (ListView) findViewById(R.id.orderlist);
+        requestQueue = Volley.newRequestQueue(HomeShop.this);
 
         JSONObject params = new JSONObject();
-        try{
-            params.put("email",loadData());
+        try {
+            params.put("email", loadData());
 
-        }catch (JSONException e){
+        } catch (JSONException e) {
 
         }
         String load_url = getResources().getString(R.string.homeshopurl);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url, params, new Response.Listener<JSONObject>() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(JSONObject response) {
-                try{
-                    JSONArray jsonArray=response.getJSONArray("orderdetails");
+                try {
+                    JSONArray jsonArray = response.getJSONArray("orderdetails");
                     //entering the values in array
-                    int l=jsonArray.length();
-                    nm=new String[l];
-                    address=new String[l];
-                    mail=new String[l];
-                    ph=new String[l];
-                    qty=new String[l];
-                    ppr=new String[l];
-                    pls=new String[l];
-                    gls=new String[l];
-                    mel=new String[l];
-                    oth=new String[l];
-                    for (int i=0;i<l;i++){
-                        JSONObject jsonObject=jsonArray.getJSONObject(i);
-                        nm[i]=jsonObject.getString("cname");
-                        address[i]=jsonObject.getString("cadd");
-                        mail[i]=jsonObject.getString("cemail");
-                        ph[i]=jsonObject.getString("cph");
-                        qty[i]=jsonObject.getString("bweight");
-                        ppr[i]=jsonObject.getString("bpaper");
-                        pls[i]=jsonObject.getString("bplastic");
-                        gls[i]=jsonObject.getString("bglass");
-                        mel[i]=jsonObject.getString("bmetal");
-                        oth[i]=jsonObject.getString("bother");
+                    int l = jsonArray.length();
+                    nm = new String[l];
+                    address = new String[l];
+                    mail = new String[l];
+                    ph = new String[l];
+                    qty = new String[l];
+                    ppr = new String[l];
+                    pls = new String[l];
+                    gls = new String[l];
+                    mel = new String[l];
+                    oth = new String[l];
+                    for (int i = 0; i < l; i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        nm[i] = jsonObject.getString("cname");
+                        address[i] = jsonObject.getString("cadd");
+                        mail[i] = jsonObject.getString("cemail");
+                        ph[i] = jsonObject.getString("cph");
+                        qty[i] = jsonObject.getString("bweight");
+                        ppr[i] = jsonObject.getString("bpaper");
+                        pls[i] = jsonObject.getString("bplastic");
+                        gls[i] = jsonObject.getString("bglass");
+                        mel[i] = jsonObject.getString("bmetal");
+                        oth[i] = jsonObject.getString("bother");
                     }
-                    RecycleOrder rc=new RecycleOrder(HomeShop.this,nm,mail,ph,address,qty,ppr,gls,mel,oth,pls);
+                    RecycleOrder rc = new RecycleOrder(HomeShop.this, nm, mail, ph, address, qty, ppr, gls, mel, oth, pls);
                     orderlist.setAdapter(rc);
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
 
@@ -99,7 +94,7 @@ public class HomeShop extends AppCompatActivity
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(HomeShop.this,error.toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeShop.this, error.toString(), Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -112,9 +107,6 @@ public class HomeShop extends AppCompatActivity
         requestQueue.add(jsonObjectRequest);
 
 
-
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -124,10 +116,11 @@ public class HomeShop extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
     protected String loadData() {
 
-        DBHelper db=new DBHelper(getApplicationContext());
-        Cursor c=db.getData();
+        DBHelper db = new DBHelper(getApplicationContext());
+        Cursor c = db.getData();
         c.moveToFirst();
         return c.getString(1);
     }
@@ -159,23 +152,20 @@ public class HomeShop extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_feeback) {
-            startActivity(new Intent(HomeShop.this,Feedback.class));
+            startActivity(new Intent(HomeShop.this, Feedback.class));
 
-        }
-        else if (id==R.id.action_aboutdevelopers){
-            startActivity(new Intent(this,AboutDevelopers.class));
+        } else if (id == R.id.action_aboutdevelopers) {
+            startActivity(new Intent(this, AboutDevelopers.class));
 
 
-        }
-        else if (id==R.id.action_logout){
+        } else if (id == R.id.action_logout) {
 
-            Intent p=new Intent(this,LoginShop.class);
+            Intent p = new Intent(this, LoginShop.class);
             startActivity(p);
             finish();
 
-        }
-        else if (id==R.id.action_aboutdevelopers){
-            startActivity(new Intent(HomeShop.this,AboutDevelopers.class));
+        } else if (id == R.id.action_aboutdevelopers) {
+            startActivity(new Intent(HomeShop.this, AboutDevelopers.class));
         }
 
         return super.onOptionsItemSelected(item);
@@ -188,13 +178,13 @@ public class HomeShop extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_shome) {
-            startActivity(new Intent(HomeShop.this,HomeShop.class));
+            startActivity(new Intent(HomeShop.this, HomeShop.class));
             finish();
         } else if (id == R.id.nav_sprofile) {
-            startActivity(new Intent(HomeShop.this,ProfileShop.class));
+            startActivity(new Intent(HomeShop.this, ProfileShop.class));
             finish();
         } else if (id == R.id.nav_aboutus) {
-            startActivity(new Intent(HomeShop.this,AboutUs.class));
+            startActivity(new Intent(HomeShop.this, AboutUs.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

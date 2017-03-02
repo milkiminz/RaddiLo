@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,19 +29,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ProfileShop extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     RequestQueue requestQueue;
-    TextView nm,add,ph,em;
+    TextView nm, add, ph, em;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,55 +44,55 @@ public class ProfileShop extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        requestQueue= Volley.newRequestQueue(ProfileShop.this);
-        nm=(TextView)findViewById(R.id.name);
-        add=(TextView)findViewById(R.id.address);
-        ph=(TextView)findViewById(R.id.phone);
-        em=(TextView)findViewById(R.id.email);
+        requestQueue = Volley.newRequestQueue(ProfileShop.this);
+        nm = (TextView) findViewById(R.id.name);
+        add = (TextView) findViewById(R.id.address);
+        ph = (TextView) findViewById(R.id.phone);
+        em = (TextView) findViewById(R.id.email);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent i=new Intent(ProfileShop.this,UpdateShop.class);
-                i.putExtra("name",nm.getText().toString());
-                i.putExtra("email",em.getText().toString());
-                i.putExtra("address",add.getText().toString());
-                i.putExtra("phone",ph.getText().toString());
+                Intent i = new Intent(ProfileShop.this, UpdateShop.class);
+                i.putExtra("name", nm.getText().toString());
+                i.putExtra("email", em.getText().toString());
+                i.putExtra("address", add.getText().toString());
+                i.putExtra("phone", ph.getText().toString());
                 startActivity(i);
             }
         });
         JSONObject params = new JSONObject();
-        try{
-            params.put("email",loadData());
+        try {
+            params.put("email", loadData());
 
-        }catch (JSONException e){
+        } catch (JSONException e) {
 
         }
         String load_url = getResources().getString(R.string.shopprofile);
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url, params, new Response.Listener<JSONObject>() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(JSONObject response) {
 
-                try{
-                    JSONArray ar=response.getJSONArray("shopdetail");
+                try {
+                    JSONArray ar = response.getJSONArray("shopdetail");
 
-                    JSONObject ob1=ar.getJSONObject(0);
+                    JSONObject ob1 = ar.getJSONObject(0);
                     //setting vlaues
                     nm.setText(ob1.getString("sname"));
                     add.setText(ob1.getString("sadd"));
                     ph.setText(ob1.getString("sph"));
                     em.setText(loadData());
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ProfileShop.this,error.toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProfileShop.this, error.toString(), Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -122,8 +116,8 @@ public class ProfileShop extends AppCompatActivity
 
     protected String loadData() {
 
-        DBHelper db=new DBHelper(getApplicationContext());
-        Cursor c=db.getData();
+        DBHelper db = new DBHelper(getApplicationContext());
+        Cursor c = db.getData();
         c.moveToFirst();
         return c.getString(1);
     }
@@ -144,7 +138,6 @@ public class ProfileShop extends AppCompatActivity
         getMenuInflater().inflate(R.menu.profile_shop, menu);
 
 
-
         return true;
     }
 
@@ -157,18 +150,16 @@ public class ProfileShop extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_feeback) {
-            startActivity(new Intent(ProfileShop.this,Feedback.class));
+            startActivity(new Intent(ProfileShop.this, Feedback.class));
             return true;
-        }
-        else if (id==R.id.action_logout){
+        } else if (id == R.id.action_logout) {
 
-            Intent p=new Intent(this,LoginShop.class);
+            Intent p = new Intent(this, LoginShop.class);
             startActivity(p);
             finish();
 
-        }
-        else if (id==R.id.action_aboutdevelopers){
-            startActivity(new Intent(ProfileShop.this,AboutDevelopers.class));
+        } else if (id == R.id.action_aboutdevelopers) {
+            startActivity(new Intent(ProfileShop.this, AboutDevelopers.class));
         }
 
 
@@ -182,13 +173,13 @@ public class ProfileShop extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_shome) {
-            startActivity(new Intent(ProfileShop.this,HomeShop.class));
+            startActivity(new Intent(ProfileShop.this, HomeShop.class));
             finish();
         } else if (id == R.id.nav_sprofile) {
-            startActivity(new Intent(ProfileShop.this,ProfileShop.class));
+            startActivity(new Intent(ProfileShop.this, ProfileShop.class));
             finish();
         } else if (id == R.id.nav_aboutus) {
-            startActivity(new Intent(ProfileShop.this,AboutUs.class));
+            startActivity(new Intent(ProfileShop.this, AboutUs.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

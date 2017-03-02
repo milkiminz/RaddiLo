@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,19 +29,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ProfileCust extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     RequestQueue requestQueue;
-    TextView nm,add,ph,em;
+    TextView nm, add, ph, em;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,55 +43,55 @@ public class ProfileCust extends AppCompatActivity
         setContentView(R.layout.activity_profile_cust);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        requestQueue= Volley.newRequestQueue(ProfileCust.this);
-        nm=(TextView)findViewById(R.id.name);
-        add=(TextView)findViewById(R.id.address);
-        ph=(TextView)findViewById(R.id.phone);
-        em=(TextView)findViewById(R.id.email);
+        requestQueue = Volley.newRequestQueue(ProfileCust.this);
+        nm = (TextView) findViewById(R.id.name);
+        add = (TextView) findViewById(R.id.address);
+        ph = (TextView) findViewById(R.id.phone);
+        em = (TextView) findViewById(R.id.email);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent i=new Intent(ProfileCust.this,UpdateCustomer.class);
-                i.putExtra("name",nm.getText().toString());
-                i.putExtra("email",em.getText().toString());
-                i.putExtra("address",add.getText().toString());
-                i.putExtra("phone",ph.getText().toString());
+                Intent i = new Intent(ProfileCust.this, UpdateCustomer.class);
+                i.putExtra("name", nm.getText().toString());
+                i.putExtra("email", em.getText().toString());
+                i.putExtra("address", add.getText().toString());
+                i.putExtra("phone", ph.getText().toString());
                 startActivity(i);
             }
         });
         JSONObject params = new JSONObject();
-        try{
-            params.put("email",loadData());
+        try {
+            params.put("email", loadData());
 
-        }catch (JSONException e){
+        } catch (JSONException e) {
 
         }
         String load_url = getResources().getString(R.string.custprofile);
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url, params, new Response.Listener<JSONObject>() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(JSONObject response) {
 
-                try{
-                    JSONArray ar=response.getJSONArray("custdetail");
+                try {
+                    JSONArray ar = response.getJSONArray("custdetail");
 
-                    JSONObject ob1=ar.getJSONObject(0);
+                    JSONObject ob1 = ar.getJSONObject(0);
 
                     nm.setText(ob1.getString("cname"));
                     add.setText(ob1.getString("cadd"));
                     ph.setText(ob1.getString("cph"));
                     em.setText(loadData());
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ProfileCust.this,error.toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProfileCust.this, error.toString(), Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -121,8 +115,8 @@ public class ProfileCust extends AppCompatActivity
 
     protected String loadData() {
 
-        DBHelper db=new DBHelper(getApplicationContext());
-        Cursor c=db.getData();
+        DBHelper db = new DBHelper(getApplicationContext());
+        Cursor c = db.getData();
         c.moveToFirst();
         return c.getString(1);
     }
@@ -143,7 +137,6 @@ public class ProfileCust extends AppCompatActivity
         getMenuInflater().inflate(R.menu.profile_cust, menu);
 
 
-
         return true;
     }
 
@@ -156,21 +149,18 @@ public class ProfileCust extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_feeback) {
-            startActivity(new Intent(ProfileCust.this,Feedback.class));
+            startActivity(new Intent(ProfileCust.this, Feedback.class));
             return true;
-        }
-        else if (id==R.id.action_aboutdevelopers){
-            startActivity(new Intent(this,AboutDevelopers.class));
-            
+        } else if (id == R.id.action_aboutdevelopers) {
+            startActivity(new Intent(this, AboutDevelopers.class));
 
-        }
-        else if (id==R.id.action_logout){
-            Intent p=new Intent(this,LoginCust.class);
+
+        } else if (id == R.id.action_logout) {
+            Intent p = new Intent(this, LoginCust.class);
             startActivity(p);
             finish();
 
         }
-
 
 
         return super.onOptionsItemSelected(item);
@@ -183,20 +173,19 @@ public class ProfileCust extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_chome) {
-            startActivity(new Intent(ProfileCust.this,HomeCust.class));
+            startActivity(new Intent(ProfileCust.this, HomeCust.class));
             finish();
 
         } else if (id == R.id.nav_cprofile) {
-            startActivity(new Intent(ProfileCust.this,ProfileCust.class));
+            startActivity(new Intent(ProfileCust.this, ProfileCust.class));
             finish();
 
-        }else if(id==R.id.nav_cbook){
-            startActivity(new Intent(ProfileCust.this,Bookings.class));
+        } else if (id == R.id.nav_cbook) {
+            startActivity(new Intent(ProfileCust.this, Bookings.class));
             finish();
 
-        }
-        else if (id == R.id.nav_aboutus) {
-            startActivity(new Intent(ProfileCust.this,AboutUs.class));
+        } else if (id == R.id.nav_aboutus) {
+            startActivity(new Intent(ProfileCust.this, AboutUs.class));
 
         }
 

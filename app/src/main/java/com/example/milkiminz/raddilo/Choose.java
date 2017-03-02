@@ -1,8 +1,8 @@
 package com.example.milkiminz.raddilo;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.google.android.gms.ads.AdRequest;
@@ -16,18 +16,20 @@ public class Choose extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose);
-       AnalyticsTrackers.initialize(this);
+        AnalyticsTrackers.initialize(this);
         mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
                 .build();
         mAdView.loadAd(adRequest);
 
     }
-    public void Recycler(View view){
-        startActivity(new Intent(Choose.this,RegistrationShop.class));//for recycler
+
+    public void Recycler(View view) {
+        startActivity(new Intent(Choose.this, RegistrationShop.class));//for recycler
     }
-    public void  Customer(View view){
-        startActivity(new Intent(Choose.this,RegistrationCust.class));//for cutomer
+
+    public void Customer(View view) {
+        startActivity(new Intent(Choose.this, RegistrationCust.class));//for cutomer
     }
 
     @Override

@@ -3,11 +3,9 @@ package com.example.milkiminz.raddilo;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -54,7 +52,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Cursor getData() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("select * from info ORDER BY id desc limit 1" , null);
+        Cursor res = db.rawQuery("select * from info ORDER BY id desc limit 1", null);
 
         //String em=res.getString(res.getColumnIndex("email"));
         return res;

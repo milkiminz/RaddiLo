@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -34,25 +34,20 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 
 public class HomeCust extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    Switch s1,s2,s3,s4,s5;
+    Switch s1, s2, s3, s4, s5;
     EditText aw;
     RequestQueue requestQueue;
     ProgressDialog pDialog;
     String[] arr;
     Spinner sp;
-    String spstring,s1string,s2string,s3string,s4string,s5string;
+    String spstring, s1string, s2string, s3string, s4string, s5string;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,18 +55,18 @@ public class HomeCust extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        s1=(Switch) findViewById(R.id.s1);
-        s2=(Switch) findViewById(R.id.s2);
-        s3=(Switch) findViewById(R.id.s3);
-        s4=(Switch) findViewById(R.id.s4);
-        s5=(Switch) findViewById(R.id.s5);
-        aw=(EditText)findViewById(R.id.aw);
+        s1 = (Switch) findViewById(R.id.s1);
+        s2 = (Switch) findViewById(R.id.s2);
+        s3 = (Switch) findViewById(R.id.s3);
+        s4 = (Switch) findViewById(R.id.s4);
+        s5 = (Switch) findViewById(R.id.s5);
+        aw = (EditText) findViewById(R.id.aw);
         requestQueue = Volley.newRequestQueue(HomeCust.this);
 
         new AttemptLogin().execute();
 
 
-        sp=(Spinner) findViewById(R.id.spinnershop);
+        sp = (Spinner) findViewById(R.id.spinnershop);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -101,8 +96,8 @@ public class HomeCust extends AppCompatActivity
         return true;
     }
 
-    public void sellNow(View view){
-        if(!aw.getText().toString().equals("")) { //checking the values
+    public void sellNow(View view) {
+        if (!aw.getText().toString().equals("")) { //checking the values
             if (s1.isChecked()) {
                 s1string = "yes";
 
@@ -166,18 +161,20 @@ public class HomeCust extends AppCompatActivity
                 }
             };
             requestQueue.add(stringRequest);
-        }else {
+        } else {
             //if approx weight is empty
             Toast.makeText(this, getResources().getString(R.string.enterweight), Toast.LENGTH_SHORT).show();
         }
     }
+
     protected String loadData() {
 
-        DBHelper db=new DBHelper(getApplicationContext());
-        Cursor c=db.getData();
+        DBHelper db = new DBHelper(getApplicationContext());
+        Cursor c = db.getData();
         c.moveToFirst();
         return c.getString(1);
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -187,18 +184,16 @@ public class HomeCust extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_feeback) {
-            startActivity(new Intent(HomeCust.this,Feedback.class));
+            startActivity(new Intent(HomeCust.this, Feedback.class));
             return true;
-        }
-        else if (id==R.id.action_logout){
+        } else if (id == R.id.action_logout) {
 
-            Intent p=new Intent(this,LoginCust.class);
+            Intent p = new Intent(this, LoginCust.class);
             startActivity(p);
             finish();
 
-        }
-        else if (id==R.id.action_aboutdevelopers){
-            startActivity(new Intent(HomeCust.this,AboutDevelopers.class));
+        } else if (id == R.id.action_aboutdevelopers) {
+            startActivity(new Intent(HomeCust.this, AboutDevelopers.class));
         }
 
         return super.onOptionsItemSelected(item);
@@ -211,20 +206,19 @@ public class HomeCust extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_chome) {
-            startActivity(new Intent(HomeCust.this,HomeCust.class));
+            startActivity(new Intent(HomeCust.this, HomeCust.class));
             finish();
 
         } else if (id == R.id.nav_cprofile) {
-            startActivity(new Intent(HomeCust.this,ProfileCust.class));
+            startActivity(new Intent(HomeCust.this, ProfileCust.class));
             finish();
 
-        }else if(id==R.id.nav_cbook){
-            startActivity(new Intent(HomeCust.this,Bookings.class));
+        } else if (id == R.id.nav_cbook) {
+            startActivity(new Intent(HomeCust.this, Bookings.class));
             finish();
 
-        }
-        else if (id == R.id.nav_aboutus) {
-            startActivity(new Intent(HomeCust.this,AboutUs.class));
+        } else if (id == R.id.nav_aboutus) {
+            startActivity(new Intent(HomeCust.this, AboutUs.class));
 
         }
 
@@ -232,14 +226,14 @@ public class HomeCust extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
     class AttemptLogin extends AsyncTask<String, String, String> {
 
 
         String success;
 
         @Override
-        protected void onPreExecute()
-        {
+        protected void onPreExecute() {
             super.onPreExecute();
             pDialog = new ProgressDialog(HomeCust.this);
             pDialog.setMessage("Logging in....");
@@ -247,52 +241,52 @@ public class HomeCust extends AppCompatActivity
             pDialog.setCancelable(true);
             pDialog.show();
         }
+
         @Override
         protected String doInBackground(String... args) {
             JSONObject params = new JSONObject();
-            String load_url =getResources().getString(R.string.fetchshopurl);
+            String load_url = getResources().getString(R.string.fetchshopurl);
 
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url,params, new Response.Listener<JSONObject>() {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, load_url, params, new Response.Listener<JSONObject>() {
                 @SuppressLint("SetTextI18n")
                 @Override
                 public void onResponse(JSONObject response) {
-                     try{
-                         JSONArray jarr=response.getJSONArray("shopname");
-                         arr=new String[jarr.length()+1];
-                         arr[0]="--Select--";
-                         for(int i=0;i<jarr.length();i++)
-                         {
-                             JSONObject job=jarr.getJSONObject(i);
-                             arr[i+1]=job.getString("sname");
-                         }
-                         ArrayAdapter<String> adapter = new ArrayAdapter<String>(HomeCust.this, android.R.layout.simple_spinner_item, arr);
+                    try {
+                        JSONArray jarr = response.getJSONArray("shopname");
+                        arr = new String[jarr.length() + 1];
+                        arr[0] = "--Select--";
+                        for (int i = 0; i < jarr.length(); i++) {
+                            JSONObject job = jarr.getJSONObject(i);
+                            arr[i + 1] = job.getString("sname");
+                        }
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(HomeCust.this, android.R.layout.simple_spinner_item, arr);
 
-                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-                         sp.setAdapter(adapter);
-
-
-                         sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                             @Override
-                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                 spstring=sp.getSelectedItem().toString();
-                             }
-
-                             @Override
-                             public void onNothingSelected(AdapterView<?> parent) {
-
-                             }
+                        sp.setAdapter(adapter);
 
 
-                         });
-                     }catch (Exception e){
+                        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                spstring = sp.getSelectedItem().toString();
+                            }
 
-                     }
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+
+
+                        });
+                    } catch (Exception e) {
+
+                    }
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(HomeCust.this,getResources().getString(R.string.slowinternet),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HomeCust.this, getResources().getString(R.string.slowinternet), Toast.LENGTH_SHORT).show();
                 }
             }) {
                 @Override
@@ -309,7 +303,6 @@ public class HomeCust extends AppCompatActivity
 
         protected void onPostExecute(String message) {
             pDialog.dismiss();
-
 
 
         }

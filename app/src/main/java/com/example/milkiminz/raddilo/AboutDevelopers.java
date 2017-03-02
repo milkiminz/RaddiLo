@@ -1,7 +1,7 @@
 package com.example.milkiminz.raddilo;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 public class AboutDevelopers extends AppCompatActivity {
 
