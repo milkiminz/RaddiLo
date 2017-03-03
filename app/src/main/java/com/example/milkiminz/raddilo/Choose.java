@@ -15,16 +15,18 @@ import app.AnalyticsTrackers;
 public class Choose extends AppCompatActivity {
 
     private AdView mAdView;
-
+    private Tracker mTracker;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose);
-        MyApplication application = (MyApplication) getApplication();
-        Tracker mTracker = application.getDefaultTracker();
+
+       MyApplication application = (MyApplication) getApplication();
+        mTracker = application.getDefaultTracker();
         mTracker.setScreenName("ChooseScreen");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
-        AnalyticsTrackers.initialize(this);
+
+
         mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
                 .build();

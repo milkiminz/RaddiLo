@@ -21,7 +21,6 @@ public class AnalyticsTrackers {
         // Add more trackers here if you need, and update the code in #get(Target) below
     }
 
-    @SuppressLint("StaticFieldLeak")
     private static AnalyticsTrackers sInstance;
 
     public static synchronized void initialize(Context context) {

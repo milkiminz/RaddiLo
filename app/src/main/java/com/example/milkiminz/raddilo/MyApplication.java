@@ -1,6 +1,6 @@
 package com.example.milkiminz.raddilo;
 
-import android.annotation.SuppressLint;
+
 import android.app.Application;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
@@ -12,7 +12,6 @@ import app.AnalyticsTrackers;
  * Created by 1415044 on 03-03-2017.
  */
 
-@SuppressLint("Registered")
 class MyApplication extends Application {
     private Tracker mTracker;
 
