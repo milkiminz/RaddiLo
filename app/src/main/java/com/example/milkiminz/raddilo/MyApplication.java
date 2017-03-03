@@ -12,7 +12,7 @@ import app.AnalyticsTrackers;
  * Created by 1415044 on 03-03-2017.
  */
 
-class MyApplication extends Application {
+public class MyApplication extends Application {
     private Tracker mTracker;
 
     @Override
