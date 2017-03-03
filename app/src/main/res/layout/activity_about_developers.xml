@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_about_developers"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -13,7 +12,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,7 +24,6 @@
                 android:text="http://milkiminz.com"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView26"
                 android:textSize="18sp"
                 android:layout_marginTop="34dp"
                 android:layout_centerHorizontal="true"
@@ -35,13 +34,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="34dp"
-                android:id="@+id/textView24"
                 android:textSize="18sp"
                 android:layout_below="@+id/textView22"
                 android:layout_alignLeft="@+id/textView22"
                 android:layout_alignStart="@+id/textView22"
                 android:layout_centerHorizontal="true"
-                android:autoLink="web" />
+                android:autoLink="web"
+                tools:ignore="ObsoleteLayoutParam" />
 
             <TextView
                 android:text="@string/mymail"
@@ -52,7 +51,8 @@
                 android:layout_marginTop="35dp"
                 android:layout_below="@+id/imageView2"
                 android:layout_centerHorizontal="true"
-                android:autoLink="email" />
+                android:autoLink="email"
+                tools:ignore="ObsoleteLayoutParam" />
 
             <TextView
                 android:text="@string/milki"
@@ -64,8 +64,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="25dp"
-                android:id="@+id/textView20"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                tools:ignore="ObsoleteLayoutParam" />
 
             <ImageView
                 app:srcCompat="@drawable/milki"
@@ -74,7 +74,9 @@
                 android:layout_height="250dp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:contentDescription="@string/me"
+                android:layout_alignParentStart="true"
+                tools:ignore="ObsoleteLayoutParam" />
 
             <TextView
                 android:text="@string/abtdev"
@@ -83,8 +85,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="46dp"
-                android:id="@+id/textView18"
-                android:textSize="36sp" />
+                android:textSize="36sp"
+                tools:ignore="ObsoleteLayoutParam" />
         </LinearLayout>
     </ScrollView>
 

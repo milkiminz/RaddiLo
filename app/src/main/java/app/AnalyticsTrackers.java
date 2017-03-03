@@ -1,7 +1,9 @@
-package com.example.milkiminz.raddilo;
+package app;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
+import com.example.milkiminz.raddilo.R;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 
@@ -9,21 +11,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Milki Minz on 2/27/2017.
+ * Created by 1415044 on 28-02-2017.
  */
 
-public final class AnalyticsTrackers {
+public class AnalyticsTrackers {
 
-    private static AnalyticsTrackers sInstance;
-    private final Map<Target, Tracker> mTrackers = new HashMap<Target, Tracker>();
-    private final Context mContext;
-
-    /**
-     * Don't instantiate directly - use {@link #getInstance()} instead.
-     */
-    private AnalyticsTrackers(Context context) {
-        mContext = context.getApplicationContext();
+    public enum Target {
+        APP,
+        // Add more trackers here if you need, and update the code in #get(Target) below
     }
+
+    @SuppressLint("StaticFieldLeak")
+    private static AnalyticsTrackers sInstance;
 
     public static synchronized void initialize(Context context) {
         if (sInstance != null) {
@@ -41,6 +40,16 @@ public final class AnalyticsTrackers {
         return sInstance;
     }
 
+    private final Map<Target, Tracker> mTrackers = new HashMap<Target, Tracker>();
+    private final Context mContext;
+
+    /**
+     * Don't instantiate directly - use {@link #getInstance()} instead.
+     */
+    private AnalyticsTrackers(Context context) {
+        mContext = context.getApplicationContext();
+    }
+
     public synchronized Tracker get(Target target) {
         if (!mTrackers.containsKey(target)) {
             Tracker tracker;
@@ -55,10 +64,5 @@ public final class AnalyticsTrackers {
         }
 
         return mTrackers.get(target);
-    }
-
-    public enum Target {
-        APP,
-        // Add more trackers here if you need, and update the code in #get(Target) below
     }
 }

@@ -2,9 +2,10 @@ package com.example.milkiminz.raddilo;
 
 import android.app.ProgressDialog;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,11 +23,11 @@ import java.util.Map;
 
 public class OtpShop extends AppCompatActivity {
 
-    String Url;
-    ProgressDialog pDialog;
-    EditText sotp;
-    String ss;
-    RequestQueue requestQueue;
+    private String Url;
+    private ProgressDialog pDialog;
+    private EditText sotp;
+    private String ss;
+    private RequestQueue requestQueue;
 
     String out;
 
@@ -34,45 +35,37 @@ public class OtpShop extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otpshop);
-        sotp=(EditText) findViewById(R.id.sotp);
+        sotp = (EditText) findViewById(R.id.sotp);
         Url = getResources().getString(R.string.verifyshop);
         Toast.makeText(this, getResources().getString(R.string.otpver), Toast.LENGTH_SHORT).show();
     }
 
 
-    public void sub(View view)
-    {
+    public void sub(View view) {
         if (!sotp.getText().toString().equals("")) {
             ss = sotp.getText().toString();
             new verify().execute();
 
-        }else {
+        } else {
             Toast.makeText(this, getResources().getString(R.string.enterotp), Toast.LENGTH_SHORT).show();
         }
     }
 
 
-    protected void saveData2(String email){
+    private String loadData() {
+        String URL = "content://com.example.milkiminz.raddilo.DBHelper";
 
-
-        DBHelper db=new DBHelper(getApplicationContext());
-        db.insertContact(email);
-    }
-    protected String loadData() {
-
-        DBHelper db=new DBHelper(getApplicationContext());
-        Cursor c=db.getData();
+        Uri dt = Uri.parse(URL);
+        Cursor c = managedQuery(dt, null, null, null, "email DESC");
         c.moveToFirst();
-        return c.getString(1);
+        return c.getString(c.getColumnIndex(DBHelper.EMAIL));
     }
 
-    class verify extends AsyncTask<String, String, String> {
-
+    private class verify extends AsyncTask<String, String, String> {
 
 
         @Override
-        protected void onPreExecute()
-        {
+        protected void onPreExecute() {
             super.onPreExecute();
             pDialog = new ProgressDialog(OtpShop.this);
             pDialog.setMessage("Checking...");
@@ -80,11 +73,9 @@ public class OtpShop extends AppCompatActivity {
             pDialog.setCancelable(true);
             pDialog.show();
         }
+
         @Override
         protected String doInBackground(String... args) {
-
-
-
 
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, Url,
@@ -96,7 +87,7 @@ public class OtpShop extends AppCompatActivity {
                             if (s.equals(getResources().getString(R.string.success))) {
 
 
-                                Toast.makeText(OtpShop.this,getResources().getString(R.string.success)+" Verified", Toast.LENGTH_LONG).show();
+                                Toast.makeText(OtpShop.this, getResources().getString(R.string.success) + " Verified", Toast.LENGTH_LONG).show();
 
                             } else if (s.equals(getResources().getString(R.string.failed))) {
 
@@ -104,7 +95,6 @@ public class OtpShop extends AppCompatActivity {
                                 Toast.makeText(OtpShop.this, getResources().getString(R.string.vf), Toast.LENGTH_LONG).show();//otp does not match
 
                             }
-
 
 
                         }
@@ -129,9 +119,9 @@ public class OtpShop extends AppCompatActivity {
                     Map<String, String> params = new Hashtable<>();
 
                     //Adding parameters
-                    params.put("semail",loadData());
+                    params.put("semail", loadData());
 
-                    params.put("sotp",ss);
+                    params.put("sotp", ss);
 
 
                     //returning parameters
@@ -155,7 +145,6 @@ public class OtpShop extends AppCompatActivity {
 
         }
     }
-
 
 
 }

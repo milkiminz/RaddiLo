@@ -1,14 +1,13 @@
 package com.example.milkiminz.raddilo;
 
 import android.app.ProgressDialog;
-import android.content.ContentProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -24,20 +23,25 @@ import com.android.volley.toolbox.Volley;
 import java.util.Hashtable;
 import java.util.Map;
 
+@SuppressWarnings("ALL")
 public class RegistrationCust extends AppCompatActivity {
 
 
-    String loginUrl;
+    private String loginUrl;
 
-    EditText name;
-    EditText email;
-    EditText password;
-    EditText confirmpassword;
-    EditText phone;
-    EditText address;
-    ProgressDialog pDialog;
-    RequestQueue requestQueue;
-    String nm,pass,ph,add,em;
+    private EditText name;
+    private EditText email;
+    private EditText password;
+    private EditText confirmpassword;
+    private EditText phone;
+    private EditText address;
+    private ProgressDialog pDialog;
+    private RequestQueue requestQueue;
+    private String nm;
+    private String pass;
+    private String ph;
+    private String add;
+    private String em;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +59,12 @@ public class RegistrationCust extends AppCompatActivity {
 
 
     public void Check(View view) { //when button is clicked
-        nm=name.getText().toString();
-        em=email.getText().toString();
-        pass=password.getText().toString();
-        ph=phone.getText().toString();
-        add=address.getText().toString();
-        if(!name.getText().toString().equals("")||!email.getText().toString().equals("")||!password.getText().toString().equals("")||!phone.getText().toString().equals("")||!address.getText().toString().equals("")) {
+        nm = name.getText().toString();
+        em = email.getText().toString();
+        pass = password.getText().toString();
+        ph = phone.getText().toString();
+        add = address.getText().toString();
+        if (!name.getText().toString().equals("") || !email.getText().toString().equals("") || !password.getText().toString().equals("") || !phone.getText().toString().equals("") || !address.getText().toString().equals("")) {
             if (isNetworkAvailable()) {
                 if (password.getText().toString().equals(confirmpassword.getText().toString())) {
                     new AttemptRegister().execute();
@@ -69,34 +73,32 @@ public class RegistrationCust extends AppCompatActivity {
                 }
             } else
                 Toast.makeText(this, getResources().getString(R.string.slowinternet), Toast.LENGTH_SHORT).show();
-        }else {
+        } else {
             Toast.makeText(this, getResources().getString(R.string.fillfields), Toast.LENGTH_SHORT).show();  //if fields are empty
         }
     }
-    public boolean isNetworkAvailable() {
+
+    private boolean isNetworkAvailable() {
         ConnectivityManager cm = (ConnectivityManager)
                 getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = cm.getActiveNetworkInfo();
         // if no network is available networkInfo will be null
         // otherwise check if we are connected
-        if (networkInfo != null && networkInfo.isConnected()) {
-            return true;
-        }
-        return false;
+        return networkInfo != null && networkInfo.isConnected();
     }
 
-    public void login(View view){
-        startActivity(new Intent(RegistrationCust.this,LoginCust.class));
+    public void login(View view) {
+        startActivity(new Intent(RegistrationCust.this, LoginCust.class));
     }
+
     class AttemptRegister extends AsyncTask<String, String, String> {
 
-        String em=email.getText().toString();
-        String pass=password.getText().toString();
+        String em = email.getText().toString();
+        String pass = password.getText().toString();
 
 
         @Override
-        protected void onPreExecute()
-        {
+        protected void onPreExecute() {
             super.onPreExecute();
             pDialog = new ProgressDialog(RegistrationCust.this);
             pDialog.setMessage("Registering....");
@@ -104,9 +106,9 @@ public class RegistrationCust extends AppCompatActivity {
             pDialog.setCancelable(true);
             pDialog.show();
         }
+
         @Override
         protected String doInBackground(String... args) {
-
 
 
             //StringRequest function
@@ -121,19 +123,17 @@ public class RegistrationCust extends AppCompatActivity {
                             if (s.equals(getResources().getString(R.string.success))) {
 
 
-                                Toast.makeText(RegistrationCust.this, getResources().getString(R.string.success)+" Registered", Toast.LENGTH_LONG).show();
+                                Toast.makeText(RegistrationCust.this, getResources().getString(R.string.successfullyregistered), Toast.LENGTH_LONG).show();
                                 finish();
                             } else if (s.equals(getResources().getString(R.string.failed))) {
 
 
                                 Toast.makeText(RegistrationCust.this, getResources().getString(R.string.rf), Toast.LENGTH_LONG).show();
 
-                            }
-                            else if(s.equals(getResources().getString(R.string.already))){
+                            } else if (s.equals(getResources().getString(R.string.already))) {
                                 Toast.makeText(RegistrationCust.this, getResources().getString(R.string.ar), Toast.LENGTH_LONG).show();
 
                             }
-
 
 
                         }
@@ -158,11 +158,11 @@ public class RegistrationCust extends AppCompatActivity {
                     Map<String, String> params = new Hashtable<>();
 
                     //Adding parameters
-                    params.put("cname",nm);
+                    params.put("cname", nm);
                     params.put("cpassword", pass);
                     params.put("cemail", em);
-                    params.put("cphone",ph);
-                    params.put("caddress",add);
+                    params.put("cphone", ph);
+                    params.put("caddress", add);
 
                     //returning parameters
                     return params;

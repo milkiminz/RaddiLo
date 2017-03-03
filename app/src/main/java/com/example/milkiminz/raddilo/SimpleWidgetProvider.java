@@ -14,23 +14,23 @@ import android.widget.RemoteViews;
 
 
 public class SimpleWidgetProvider extends AppWidgetProvider {
-    RemoteViews remoteViews;
+    private RemoteViews remoteViews;
 
-    public static PendingIntent actionPendingIntent(Context context) {
+    private static PendingIntent actionPendingIntent(Context context) {
         Intent intent = new Intent(context, AboutDevelopers.class);
         intent.setAction("LAUNCH_ACTIVITY");
         return PendingIntent.getActivity(context, 0, intent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
-    public static PendingIntent actionPendingIntent1(Context context) {
+    private static PendingIntent actionPendingIntent1(Context context) {
         Intent intent = new Intent(context, UpcomingFeatures.class);
         intent.setAction("LAUNCH_ACTIVITY");
         return PendingIntent.getActivity(context, 0, intent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
-    public static void pushWidgetUpdate(Context context, RemoteViews remoteViews) {
+    private static void pushWidgetUpdate(Context context, RemoteViews remoteViews) {
         ComponentName myWidget = new ComponentName(context, SimpleWidgetProvider.class);
         AppWidgetManager manager = AppWidgetManager.getInstance(context);
         manager.updateAppWidget(myWidget, remoteViews);

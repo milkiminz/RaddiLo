@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/items"
-    android:background="@drawable/bg1">
+    android:background="@drawable/bg1"
+    tools:ignore="Overdraw">
 
     <TextView
         android:text="Catalog !"
@@ -52,7 +53,6 @@
     <TextView
         android:text="Upcoming Features"
         android:layout_height="wrap_content"
-        android:id="@+id/textView33"
         android:textColor="@android:color/holo_blue_bright"
         android:layout_alignBaseline="@+id/textView31"
         android:layout_alignBottom="@+id/textView31"

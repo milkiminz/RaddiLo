@@ -2,9 +2,10 @@ package com.example.milkiminz.raddilo;
 
 import android.app.ProgressDialog;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,11 +23,11 @@ import java.util.Map;
 
 public class OtpCust extends AppCompatActivity {
 
-    String Url;
-    ProgressDialog pDialog;
-    EditText cotp;
-    String ss;
-    RequestQueue requestQueue;
+    private String Url;
+    private ProgressDialog pDialog;
+    private EditText cotp;
+    private String ss;
+    private RequestQueue requestQueue;
 
     String out;
 
@@ -34,45 +35,40 @@ public class OtpCust extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otpcust);
-        cotp=(EditText) findViewById(R.id.cotp);
+        cotp = (EditText) findViewById(R.id.cotp);
         Url = getResources().getString(R.string.verifycust);
         Toast.makeText(this, getResources().getString(R.string.otpver), Toast.LENGTH_SHORT).show();
     }
 
 
-    public void sub(View view)
-    {
-if (!cotp.getText().toString().equals("")){
-        ss=cotp.getText().toString();
-        new verify().execute();
+    public void sub(View view) {
+        if (!cotp.getText().toString().equals("")) {
+            ss = cotp.getText().toString();
+            new verify().execute();
 
 
-    }else {
-    Toast.makeText(this, getResources().getString(R.string.enterotp), Toast.LENGTH_SHORT).show();
-}
+        } else {
+            Toast.makeText(this, getResources().getString(R.string.enterotp), Toast.LENGTH_SHORT).show();
+        }
     }
 
 
-    protected void saveData2(String email){
 
 
-        DBHelper db=new DBHelper(getApplicationContext());
-        db.insertContact(email);
-    }
-    protected String loadData() {
+    private String loadData() {
+        String URL = "content://com.example.milkiminz.raddilo.DBHelper";
 
-        DBHelper db=new DBHelper(getApplicationContext());
-        Cursor c=db.getData();
+        Uri dt = Uri.parse(URL);
+        Cursor c = managedQuery(dt, null, null, null, "email DESC");
         c.moveToFirst();
-        return c.getString(1);
+        return c.getString(c.getColumnIndex(DBHelper.EMAIL));
     }
-    class verify extends AsyncTask<String, String, String> {
 
+    private class verify extends AsyncTask<String, String, String> {
 
 
         @Override
-        protected void onPreExecute()
-        {
+        protected void onPreExecute() {
             super.onPreExecute();
             pDialog = new ProgressDialog(OtpCust.this);
             pDialog.setMessage("Checking...");
@@ -80,11 +76,9 @@ if (!cotp.getText().toString().equals("")){
             pDialog.setCancelable(true);
             pDialog.show();
         }
+
         @Override
         protected String doInBackground(String... args) {
-
-
-
 
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, Url,
@@ -96,7 +90,7 @@ if (!cotp.getText().toString().equals("")){
                             if (s.equals(getResources().getString(R.string.success))) {
 
 
-                                Toast.makeText(OtpCust.this, getResources().getString(R.string.success)+" Verified", Toast.LENGTH_LONG).show();
+                                Toast.makeText(OtpCust.this, getResources().getString(R.string.success) + " Verified", Toast.LENGTH_LONG).show();
 
                             } else if (s.equals(getResources().getString(R.string.failed))) {
 
@@ -104,7 +98,6 @@ if (!cotp.getText().toString().equals("")){
                                 Toast.makeText(OtpCust.this, getResources().getString(R.string.vf), Toast.LENGTH_LONG).show();//otp doesnot match
 
                             }
-
 
 
                         }
@@ -129,9 +122,9 @@ if (!cotp.getText().toString().equals("")){
                     Map<String, String> params = new Hashtable<>();
 
                     //Adding parameters
-                    params.put("cemail",loadData());
+                    params.put("cemail", loadData());
 
-                    params.put("cotp",ss);
+                    params.put("cotp", ss);
 
 
                     //returning parameters
@@ -155,7 +148,6 @@ if (!cotp.getText().toString().equals("")){
 
         }
     }
-
 
 
 }

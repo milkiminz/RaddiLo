@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark">
+    android:background="@color/colorPrimaryDark"
+    tools:ignore="Overdraw">
 
     <TextView
         android:text="@string/name"
@@ -150,7 +152,8 @@
         android:layout_toStartOf="@+id/paper"
         android:layout_marginRight="44dp"
         android:layout_marginEnd="44dp"
-        android:id="@+id/textView19" />
+        android:id="@+id/textView19"
+        tools:ignore="RelativeOverlap" />
 
     <TextView
         android:text="TextView"
@@ -204,8 +207,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/glass"
         android:layout_alignLeft="@+id/textView23"
-        android:layout_alignStart="@+id/textView23"
-        android:id="@+id/textView25" />
+        android:layout_alignStart="@+id/textView23" />
 
     <TextView
         android:text="TextView"
@@ -224,7 +226,6 @@
         android:layout_alignBottom="@+id/others"
         android:layout_alignRight="@+id/textView23"
         android:layout_alignEnd="@+id/textView23"
-        android:id="@+id/textView27"
         android:paddingBottom="40dp" />
 
 </RelativeLayout>

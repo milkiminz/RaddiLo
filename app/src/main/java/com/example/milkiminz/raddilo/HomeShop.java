@@ -3,6 +3,7 @@ package com.example.milkiminz.raddilo;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -32,9 +33,18 @@ import java.util.Map;
 
 public class HomeShop extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    ListView orderlist;
-    RequestQueue requestQueue;
-    String[] nm, address, mail, ph, qty, ppr, pls, mel, gls, oth;
+    private ListView orderlist;
+    private RequestQueue requestQueue;
+    private String[] nm;
+    private String[] address;
+    private String[] mail;
+    private String[] ph;
+    private String[] qty;
+    private String[] ppr;
+    private String[] pls;
+    private String[] mel;
+    private String[] gls;
+    private String[] oth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,12 +127,13 @@ public class HomeShop extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    protected String loadData() {
+    private String loadData() {
+        String URL = "content://com.example.milkiminz.raddilo.DBHelper";
 
-        DBHelper db = new DBHelper(getApplicationContext());
-        Cursor c = db.getData();
+        Uri dt = Uri.parse(URL);
+        Cursor c = managedQuery(dt, null, null, null, "email DESC");
         c.moveToFirst();
-        return c.getString(1);
+        return c.getString(c.getColumnIndex(DBHelper.EMAIL));
     }
 
 

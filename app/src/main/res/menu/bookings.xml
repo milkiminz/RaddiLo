@@ -4,16 +4,16 @@
     <item
         android:id="@+id/action_feeback"
         android:orderInCategory="10"
-        android:title="Feedback"
+        android:title="@string/feedback"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_aboutdevelopers"
         android:orderInCategory="10"
-        android:title="About Developers"
+        android:title="@string/abtdev"
         app:showAsAction="never"/>
     <item
         android:id="@+id/action_logout"
         android:orderInCategory="10"
-        android:title="LogOut"
+        android:title="@string/logout"
         app:showAsAction="never"/>
 </menu>

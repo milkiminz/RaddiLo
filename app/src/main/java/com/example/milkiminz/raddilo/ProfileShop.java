@@ -3,6 +3,7 @@ package com.example.milkiminz.raddilo;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -34,8 +35,11 @@ import java.util.Map;
 
 public class ProfileShop extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    RequestQueue requestQueue;
-    TextView nm, add, ph, em;
+    private RequestQueue requestQueue;
+    private TextView nm;
+    private TextView add;
+    private TextView ph;
+    private TextView em;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,12 +118,13 @@ public class ProfileShop extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    protected String loadData() {
+    private String loadData() {
+        String URL = "content://com.example.milkiminz.raddilo.DBHelper";
 
-        DBHelper db = new DBHelper(getApplicationContext());
-        Cursor c = db.getData();
+        Uri dt = Uri.parse(URL);
+        Cursor c = managedQuery(dt, null, null, null, "email DESC");
         c.moveToFirst();
-        return c.getString(1);
+        return c.getString(c.getColumnIndex(DBHelper.EMAIL));
     }
 
     @Override

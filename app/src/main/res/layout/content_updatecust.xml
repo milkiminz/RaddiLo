@@ -2,13 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/content_updatecust"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/update"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.milkiminz.raddilo.UpdateCustomer"
-    tools:showIn="@layout/activity_updatecust">
+    tools:showIn="@layout/activity_updatecust"
+    tools:ignore="Overdraw">
     <TextView
         android:text="@string/name"
         android:layout_width="wrap_content"
@@ -45,7 +45,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="phone"
         android:ems="10"
         android:layout_below="@+id/textView6"
         android:layout_alignLeft="@+id/name"
@@ -87,6 +87,5 @@
         android:layout_below="@+id/address"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="34dp"
-        android:id="@+id/button3"
         android:onClick="update1" />
 </RelativeLayout>

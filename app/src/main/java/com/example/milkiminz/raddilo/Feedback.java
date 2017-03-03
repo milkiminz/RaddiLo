@@ -1,6 +1,7 @@
 package com.example.milkiminz.raddilo;
 
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -20,9 +21,9 @@ import java.util.Map;
 
 public class Feedback extends AppCompatActivity {
 
-    EditText gfb;
-    String fb;
-    RequestQueue requestQueue;
+    private EditText gfb;
+    private String fb;
+    private RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,13 +70,13 @@ public class Feedback extends AppCompatActivity {
         }
     }
 
-    protected String loadData() {
+    private String loadData() {
+        String URL = "content://com.example.milkiminz.raddilo.DBHelper";
 
-        DBHelper db = new DBHelper(getApplicationContext());
-        Cursor c = db.getData();
+        Uri dt = Uri.parse(URL);
+        Cursor c = managedQuery(dt, null, null, null, "email DESC");
         c.moveToFirst();
-        return c.getString(1);
+        return c.getString(c.getColumnIndex(DBHelper.EMAIL));
     }
-
 }
 

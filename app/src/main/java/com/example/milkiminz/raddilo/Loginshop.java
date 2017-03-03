@@ -1,16 +1,16 @@
 package com.example.milkiminz.raddilo;
 
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.v7.app.AppCompatActivity;
-
+import android.net.Uri;
 import android.os.AsyncTask;
-
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -23,24 +23,20 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Hashtable;
 import java.util.Map;
 
 
-public class LoginShop extends AppCompatActivity  {
+@SuppressWarnings("ALL")
+public class LoginShop extends AppCompatActivity {
 
-    String loginUrl;
+    private String loginUrl;
 
-    EditText email;
-    EditText password;
-    ProgressDialog pDialog;
-    RequestQueue requestQueue;
+    private EditText email;
+    private EditText password;
+    private ProgressDialog pDialog;
+    private RequestQueue requestQueue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,33 +47,52 @@ public class LoginShop extends AppCompatActivity  {
 
     }
 
-    public void Login_now(View view){
-        if(!email.getText().toString().equals("")||!password.getText().toString().equals("")){
+    public void Login_now(View view) {
+        if (!email.getText().toString().equals("") || !password.getText().toString().equals("")) {
             if (isNetworkAvailable()) {
                 new AttemptLogin().execute();
-            }else{
-                Toast.makeText(LoginShop.this,getResources().getString(R.string.slowinternet), Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(LoginShop.this, getResources().getString(R.string.slowinternet), Toast.LENGTH_LONG).show();
             }
-        }else{
+        } else {
             Toast.makeText(this, getResources().getString(R.string.enteremailpassword), Toast.LENGTH_SHORT).show();
         }
     }
 
+    private void saveData2(String email){
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.EMAIL,
+                (email));
+        getContentResolver().insert(
+                DBHelper.CONTENT_URI, values);
 
+    }
+    private String loadData() {
+        String URL = "content://com.example.milkiminz.raddilo.DBHelper";
 
+        Uri dt = Uri.parse(URL);
+        Cursor c = managedQuery(dt, null, null, null, "email DESC");
+        c.moveToFirst();
+        return c.getString(c.getColumnIndex(DBHelper.EMAIL));
+    }
 
-
-
+    private boolean isNetworkAvailable() {
+        ConnectivityManager cm = (ConnectivityManager)
+                getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+        // if no network is available networkInfo will be null
+        // otherwise check if we are connected
+        return networkInfo != null && networkInfo.isConnected();
+    }
 
     class AttemptLogin extends AsyncTask<String, String, String> {
 
-        String em=email.getText().toString();
-        String pass=password.getText().toString();
+        String em = email.getText().toString();
+        String pass = password.getText().toString();
         String success;
 
         @Override
-        protected void onPreExecute()
-        {
+        protected void onPreExecute() {
             super.onPreExecute();
             pDialog = new ProgressDialog(LoginShop.this);
             pDialog.setMessage("Logging in....");
@@ -85,11 +100,9 @@ public class LoginShop extends AppCompatActivity  {
             pDialog.setCancelable(true);
             pDialog.show();
         }
+
         @Override
         protected String doInBackground(String... args) {
-
-
-
 
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, loginUrl,
@@ -102,7 +115,7 @@ public class LoginShop extends AppCompatActivity  {
 
                                 saveData2(em);
                                 Toast.makeText(LoginShop.this, getResources().getString(R.string.success), Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(LoginShop.this,HomeShop.class));
+                                startActivity(new Intent(LoginShop.this, HomeShop.class));
                                 finish();
                             } else if (s.equals(getResources().getString(R.string.failed))) {
 
@@ -160,32 +173,6 @@ public class LoginShop extends AppCompatActivity  {
 
 
         }
-    }
-
-    protected void saveData2(String email){
-
-
-        DBHelper db=new DBHelper(getApplicationContext());
-        db.insertContact(email);
-    }
-    protected String loadData() {
-
-        DBHelper db=new DBHelper(getApplicationContext());
-        Cursor c=db.getData();
-        c.moveToFirst();
-        return c.getString(1);
-    }
-
-    public boolean isNetworkAvailable() {
-        ConnectivityManager cm = (ConnectivityManager)
-                getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = cm.getActiveNetworkInfo();
-        // if no network is available networkInfo will be null
-        // otherwise check if we are connected
-        if (networkInfo != null && networkInfo.isConnected()) {
-            return true;
-        }
-        return false;
     }
 
 

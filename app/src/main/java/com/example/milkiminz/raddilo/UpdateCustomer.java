@@ -21,9 +21,11 @@ import java.util.Map;
 
 public class UpdateCustomer extends AppCompatActivity {
 
-    EditText nm, ph, add;
-    String em;
-    RequestQueue requestQueue;
+    private EditText nm;
+    private EditText ph;
+    private EditText add;
+    private String em;
+    private RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +49,7 @@ public class UpdateCustomer extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 if (response.equals(getResources().getString(R.string.success))) {
-                    Toast.makeText(UpdateCustomer.this, getResources().getString(R.string.success) + ": updated", Toast.LENGTH_LONG).show();
+                    Toast.makeText(UpdateCustomer.this, getResources().getString(R.string.successfullyupdated), Toast.LENGTH_LONG).show();
                     startActivity(new Intent(UpdateCustomer.this, ProfileCust.class));
                     finish();
                 }

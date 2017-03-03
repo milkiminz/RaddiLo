@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -40,13 +41,22 @@ import java.util.Map;
 
 public class HomeCust extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    Switch s1, s2, s3, s4, s5;
-    EditText aw;
-    RequestQueue requestQueue;
-    ProgressDialog pDialog;
-    String[] arr;
-    Spinner sp;
-    String spstring, s1string, s2string, s3string, s4string, s5string;
+    private Switch s1;
+    private Switch s2;
+    private Switch s3;
+    private Switch s4;
+    private Switch s5;
+    private EditText aw;
+    private RequestQueue requestQueue;
+    private ProgressDialog pDialog;
+    private String[] arr;
+    private Spinner sp;
+    private String spstring;
+    private String s1string;
+    private String s2string;
+    private String s3string;
+    private String s4string;
+    private String s5string;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,14 +177,14 @@ public class HomeCust extends AppCompatActivity
         }
     }
 
-    protected String loadData() {
+    private String loadData() {
+        String URL = "content://com.example.milkiminz.raddilo.DBHelper";
 
-        DBHelper db = new DBHelper(getApplicationContext());
-        Cursor c = db.getData();
+        Uri dt = Uri.parse(URL);
+        Cursor c = managedQuery(dt, null, null, null, "email DESC");
         c.moveToFirst();
-        return c.getString(1);
+        return c.getString(c.getColumnIndex(DBHelper.EMAIL));
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -227,7 +237,7 @@ public class HomeCust extends AppCompatActivity
         return true;
     }
 
-    class AttemptLogin extends AsyncTask<String, String, String> {
+    private class AttemptLogin extends AsyncTask<String, String, String> {
 
 
         String success;
