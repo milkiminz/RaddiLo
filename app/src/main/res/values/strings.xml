@@ -115,5 +115,7 @@
     <string name="homemenu">Home</string>
     <string name="bookingmenu">Booking</string>
     <string name="myprofilemenu">My Profile</string>
-
+<string name="catalog">Catalog !</string>
+    <string name="selecttheitems">Select The Items</string>
+    <string name="portfolio">http://milkiminz.com</string>
 </resources>

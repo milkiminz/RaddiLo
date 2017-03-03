@@ -8,7 +8,7 @@
     tools:ignore="Overdraw">
 
     <TextView
-        android:text="Catalog !"
+        android:text="@string/catalog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txt"
@@ -29,7 +29,7 @@
         android:layout_toEndOf="@+id/txt" />
 
     <TextView
-        android:text="About Developer"
+        android:text="@string/abtdev"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView31"
@@ -51,7 +51,7 @@
         android:layout_toStartOf="@+id/txt" />
 
     <TextView
-        android:text="Upcoming Features"
+        android:text="@string/uf"
         android:layout_height="wrap_content"
         android:textColor="@android:color/holo_blue_bright"
         android:layout_alignBaseline="@+id/textView31"

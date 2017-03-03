@@ -21,7 +21,7 @@
             android:orientation="vertical" >
 
             <TextView
-                android:text="http://milkiminz.com"
+                android:text="@string/portfolio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
